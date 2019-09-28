@@ -1,0 +1,194 @@
+//Brand color
+$brandColor: #4482d0;
+$brandColorGreen:  #a7c739;
+$brandColorBlue:#182d57;
+
+$colorBlack: #000000;
+$colorWhite: #FFFFFF;
+$colorManageCardToolTip: #f1f0f0;
+
+//H1 - Page Titles
+$colorHeaderTitle: #aaa9aa;
+
+//H2 - Content Subheads
+$colorSubHeaderTitle: #102043;
+
+//H4 - HomePageContent Subheads
+$colorSmallPanelHeaderTitle: #f89d20;
+
+//Accordion Background Color
+$colorAccordionBG:  #f7cd97;
+$colorAccordionLBG: #fdf6eb;
+$colorAccordionFont: #f89d20;
+
+//Content Link
+$colorTextLinkUnderLine: #102043;
+$colorTextLinkRO: #aaa9aa;
+
+//Field Label Color
+$colorFieldLabel: #4f4e4e;
+$colorFieldBG: #f6f6f6;
+$colorFieldDefault: #afafb2;
+$colorLink : #606066;
+
+//Global Color
+$colorSuccess: #2aa3dc;
+$colorError: #c52222;
+
+$colorGrey:#f1f1f1;
+$colorGrey10: #eee;
+$colorGrey20: #d4d4d4;
+$colorGrey30: #545454;
+$colorGrey40: #A9A8A9;
+$colorGrey50: #656565;
+$colorGrey60:#4b4b52;
+$colorGrey606:#f8f8f8;
+$colorGrey70:#939598;
+$colorRed:#c52222;
+$colorBlueSoft: #565655;
+$colorBlueMain: #bbbbbb;
+$colorBlueColor : #00a0dd ;
+$colorDarkBlue:  #102043;
+$colorDarkRed: #c22134;
+$colorRollover: #abaaab;
+
+
+$colorGrey90: #efeeee;
+$colorGrey80: #999999;
+$colorGrey100:#616262;
+$colorShadow: #c6c4c3;
+$colorSeperator: #b3b3b5;
+$colorBrand10: #2398a7;
+$colorGrey101:#d0d0d0;
+
+//Modal
+$colorGreyShade: #aaaaaa;
+
+//Button Color
+
+$colorPrimaryBtnDisabledBG: #aaa9aa;
+$colorPrimaryBtnDisFont: #e6e6e6;
+$colorPrimaryBtnDefaultBG: #4f4e4e;
+$colorPrimaryBtnDefaultFont: $colorWhite;
+
+$colorPrimaryBtnRollBG: #aba9aa;
+$colorPrimaryBtnRoll: $colorWhite;
+
+//Section Divider
+$colorDivider: #eeeeee;
+$tealRule: #006371;
+$tabColor:#2098a7;
+
+
+
+$colorWhite : #ffffff;
+$colorform: #504f4f;
+$colorBlack: #000000;
+$colorBlue: #0093c9;
+$colorSilver: #c0c0c0;
+$colorGray: #808080;
+$colorRed: #ff0000;
+$colorDarkGray: #a9a9a9;
+$colorGray83: #d4d4d4;
+$colorPacificBlue: #00a0dd;
+$colorShadyLady: #aaa8a9;
+$colorWhiteSmoke: #f6f6f6;
+$colorLondonHue: #aaa9aa;
+$colorLola: #abaaab;
+$colorNandor: #545554;
+$colorDimGray: #656565;
+$colorWhisper: #eeeeee;
+$colorLondonHueA9: #a9a8a9;
+$colorWhiteSmokeF1: #f1f1f1;
+$colorPage: #f7f8f8;
+$colorNero: #221f1f;
+$colorTundora: #534f4c;
+$colorBokaraGrey: #232221;
+$colorPattensBlue: #ccebf9;
+$colorShipGrey: #565655;
+$colorMatterhorn: #4f4e4e;
+$colorNobel: #a2a1a1;
+$colorNandor54: #545454;
+$color-primary: $colorGray83;
+$colorBrandColor: #0093c9;
+$colorGrey10: #f1f1f1;
+$colorGrey20: #eee;
+$colorGrey30:	#4e4e4e;
+$colorGrey40: #dcdcdd;
+$colorGrey50: #acabac;
+$colorFieldDefault: #aaa9aa;
+$colorPrimaryBtnRollBG: #aba9aa;
+$colorSmallPanelHeaderTitle: #ee3124;
+
+
+$colorFieldLabel: #4e4e4e;
+$colorRollover: #abaaab;
+$colorGrey50: #656565;
+$colorGreyShade: #aaaaaa;
+$colorDarkBlue:  #102043;
+$colorAccordionBG:#f6f6f6;
+$colorSeperator: #b3b3b5;
+$colorlightBlue:#e5f6fc;
+$colordarkBlue10:#0c426a;
+
+
+
+
+.lineSeperator{
+    
+	   &:nth-child(1), &:nth-child(3){
+		border-right: 1px solid $colorSeperator;
+		height: 14px;
+		line-height: 5px;
+	    }
+		&.both{&:nth-child(3){border:none;}}
+		&.addToMenu{&:nth-child(4){border-right: 1px solid $colorSeperator;
+		height: 14px;
+		line-height: 5px;}}
+	  
+	}
+
+.not_signed_in{.lineSeperator{&.addToMenu{&:nth-child(4){
+border:none;}}}
+
+}
+.signed_in{.lineSeperator{
+				&:nth-child(1){border:none;}
+				&:nth-child(2){border-right: 1px solid $colorSeperator;height: 14px;line-height: 5px;}
+				&:nth-child(4){border-right: 1px solid $colorSeperator;}
+				&:last-child{border-right: none;}
+				}}
+
+.brandLoginInfoModule.dividerModule {
+  padding-top: 0;
+  min-height: inherit;
+  min-height: initial;
+}
+.SSaccountHeader, .dividerModule {
+  p a {
+    text-decoration: underline;
+  }
+  padding-top: 38px;
+  min-height: 548px !important;
+  &#account{padding-top:26px;}
+  
+  &.smallPanels{min-height:1px !important;}
+  
+}
+//Section Divider
+.dividerModule{border-top:5px solid $brandColor;}
+
+.dividerModuleGrey{border-top:5px solid $colorHeaderTitle;}
+
+// Bootstrap overrides
+$brand-primary: $brandColor;
+
+
+// Fonts
+// Font template: <font weight> <font size/[line height]> <font family>
+$font-rs-semibold-50: 400 50px/100px RobotoSlab-Semibold;
+
+
+//font: $font-rs-semibold-50;
+
+$nav-tabs-active-link-hover-bg: #f89d20;

@@ -1,0 +1,72 @@
+<div class="container" id="toppaddingPage">
+    <div class="row justify-content-center">
+        <div class="media-container-column col-lg-6" data-form-type="formoid">
+            <h1 class="text-center horizontal-spacing-4 collapse-padding font24px28pxlh">{{view?.topLabel}}</h1>
+            <form *ngIf="!showMessage" #messagePreferenceForm="ngForm" (submit)="onFormSubmit(messagePreferenceForm.value)">
+                <div class="row row-sm-offset text-center">
+                    <div class="col-lg-12 col-md-12 col-sm-12" data-for="name">
+                        <p class="font18px font-color-colorblue text-center description"><strong>{{view?.description}}</strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="row row-sm-offset mgPreferenceBlock">
+                    <div class="col-md-9 horizontal-spacing-left-9" data-for="phone">
+                        <label class="mgPreference font-color-colorblue horizontal-spacing-left-3 font18px"><strong>{{view?.receiveAlerts}}</strong>
+                            <p class="font9px font-color-colorblue horizontal-spacing-left-1 vertical-spacing-top-2">
+                                {{view?.optYesDescription}}
+                            </p>
+
+                            <input type="radio" checked="checked" name="alertOption" [(ngModel)]="alertOptions" [value]="true" #alertOption='ngModel'>
+                            <span class="checkmark"></span>
+                        </label>
+
+                    </div>
+                </div>
+                <div class="row row-sm-offset mgPreferenceBlock vertical-padding-bottom-3">
+                    <div class="col-md-9 horizontal-spacing-left-9" data-for="phone">
+                        <label class="mgPreference font-color-colorblue horizontal-spacing-left-3 font18px"><strong>{{view?.optOutAlerts}}</strong>
+                            <input type="radio" checked="checked" name="alertOption" [(ngModel)]="alertOptions" [value]="false" #alertOption="ngModel">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row row-sm-offset" [hidden]="!alertOptions">
+                    <div class="col-md-6 col-lg-6 col-sm-12  horizontal-padding-right-1" data-for="name">
+                        <div class="form-group select-arrow">
+                            <select tabindex="0" type="text" class="form-control" name="alertFrequency" data-form-field="Name" required="" [disabled]='!alertOptions'
+                                [(ngModel)]='alertFrequencys' #alertFrequency='ngModel' (change)="onChangeFrequency($event.target.value)">
+                                <option class="option" value="" selected>{{view?.inputField[0].fields.placeHolderText}}</option>
+                                <option class="option" value="BM">{{view?.dropdown1}}</option>
+                                <option class="option" value='MM'>{{view?.dropdown2}}</option>
+                                <option class="option" value="EM">{{view?.dropdown3}}</option>
+                            </select>
+                            <!-- <div class="overlay-arrow">&#9660;</div> -->
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-12 horizontal-padding-right-1" data-for="name">
+                        <div class="form-group">
+                            <input tabindex="0" type="tel" class="form-control select-arrow" name="lowBalanceAlert" data-form-field="Phone" [(ngModel)]="lowBalanceAlertAmount"
+                               #lowBalanceAlert='ngModel' (input)="allowNumbers($event.target)" (change)="onInputBalance($event.target)" placeholder="{{view?.inputField[1].fields.placeHolderText}}"
+                            maxlength="4" />
+                            <div *ngIf="lowBalanceAlert.touched && isRange" class="alert alert-danger">
+                                <span class="error font-color-red" *ngIf="isRange">
+                                    Please enter an amount between $2 to $250.
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row input-group-btn">
+                    <button href="" type="submit" class="btn btn-primary btn-form col-md-6 col-md-6 col-sm-6">
+                        <strong>{{view?.buttonLabel}}</strong></button>
+                </div>
+                <div class="row input-group-btn vertical-spacing-top-3">
+                    <div class="text-message font9px font-color-colorblue col-md-12 col-lg-12 col-sm-12">{{view?.bottomDescriptionP1}}</div>
+                    <div class="text-message font9px font-color-colorblue col-md-12 col-lg-12 col-sm-12">{{view?.bottomDescriptionP2}}</div>
+                </div>
+            </form>
+             <app-notify></app-notify>
+        </div>
+    </div>
+</div>

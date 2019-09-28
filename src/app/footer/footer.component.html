@@ -1,0 +1,26 @@
+
+<!--<footer class="text-center hidden-xs hidden-sm visible-md visible-lg">.-->
+<footer class="d-none d-sm-none d-xl-block d-lg-block footer-alt text-center mt-5">
+    <div>
+        <ul class="" itemscope="" itemtype="http://schema.org/BreadcrumbList" >
+            <li *ngFor="let link of view?.footerLinks">
+                <a routerLink="{{link?.fields?.linkUrl}}">
+                    <span>{{link?.fields?.linkName}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</footer>
+
+    <!--<footer class="mobileVersion hidden-lg hidden-md visible-sm visible-xs">-->
+<footer class="d-xl-none mobileVersion d-lg-none d-sm-block d-xs-block d-md-block container-fluid">
+    <div class="collapse-padding-xs">
+        <div class="col-xs-12 footerItem">
+            <p class="logoText pull-right">{{view?.footerLogo.fields.description}}</p>
+            <a class="nav-link pull-right" href="{{view?.inCommUrl}}">
+                <img src="{{view?.footerLogo.fields.file.url}}" alt="">
+            </a>
+        </div>
+       
+    </div>
+</footer>

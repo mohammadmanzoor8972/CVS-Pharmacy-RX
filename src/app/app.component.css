@@ -1,0 +1,14 @@
+.scrollicon{
+    position: fixed;
+    bottom: 4em;
+    right: 2em;
+    z-index: 999999;
+    border-radius: 50px;
+    box-shadow: 3px 3px 15px 0px #5e5e5e;
+    background-color:white;
+    border:1px solid black;
+    width: 3em;
+    height: 3em;
+    padding-left: 1.1em;
+    padding-top: .8em;
+}

@@ -1,0 +1,157 @@
+<app-notify *ngIf="!showMessage"></app-notify>
+<div class="container" id="toppaddingPage">
+  <div class="row justify-content-center">
+    <div class="media-container-column col-lg-9" data-form-type="formoid">
+      <h1 class="text-center collapse-padding vertical-spacing-bottom-5">{{view?.mainHeader}}</h1>
+      <form *ngIf="!showMessage" [formGroup]='updateProfileForm' (submit)='onFormSubmit(updateProfileForm.value)'>
+        <div class="row row-sm-offset">
+          <div class="col-md-6" data-for="firstName">
+            <div class="form-group">
+              <input type="text" class="form-control" name="name" data-form-field="firstName" placeholder="{{view?.placeHolderField[0].fields.placeHolderText}}"
+                formControlName="firstName" (input)="allowCharacters(updateProfileForm.get('firstName'))" required>
+              <div *ngIf="updateProfileForm.get('firstName').touched && updateProfileForm.get('firstName').invalid" class="alert alert-danger">
+                <span class="error font-color-red" *ngIf="updateProfileForm.get('firstName').hasError('required') && updateProfileForm.get('firstName').touched">
+                  {{view?.authField[0].fields.authField}}
+                </span>
+                <span class="error font-color-red" *ngIf="updateProfileForm.get('firstName').hasError('minlength') && updateProfileForm.get('firstName').touched">
+                  {{view?.authField[1].fields.authField}}
+                </span>
+                <span class="error font-color-red" *ngIf="updateProfileForm.get('firstName').hasError('maxlength') && updateProfileForm.get('firstName').touched">
+                  {{view?.authField[2].fields.authField}}
+                </span>
+              </div>
+
+            </div>
+
+
+          </div>
+
+
+          <div class="col-md-6" data-for="lastName">
+            <div class="form-group">
+              <input type="text" class="form-control" name="lastName" data-form-field="lastName" placeholder="{{view?.placeHolderField[1].fields.placeHolderText}}"
+                formControlName="lastName" (input)=" allowCharacters(updateProfileForm.get('lastName'))">
+
+              <div *ngIf="updateProfileForm.get('lastName').touched && updateProfileForm.get('lastName').invalid" class="alert alert-danger">
+                <span class="error font-color-red" *ngIf="updateProfileForm.get('lastName').hasError('required') && updateProfileForm.get('lastName').touched">
+                  {{view?.authField[3].fields.authField}}
+                </span>
+                <span class="error font-color-red" *ngIf="updateProfileForm.get('lastName').hasError('minlength') && updateProfileForm.get('lastName').touched">
+                  {{view?.authField[1].fields.authField}}
+                </span>
+                <span class="error font-color-red" *ngIf="updateProfileForm.get('lastName').hasError('maxlength') && updateProfileForm.get('lastName').touched">
+                   {{view?.authField[2].fields.authField}}
+                </span>
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="row row-sm-offset">
+          <div class="col-md-6" data-for="name">
+            <div class="form-group" id="update-profile-date-picker">
+
+              <mat-form-field id="sign-up-date-picker-input" (click)="picker.open()" [floatPlaceholder]="'never'">
+            
+
+             <input matInput autocomplete="off"  formControlName='dateOfBirth' id="datePicker"  [min]="minDate" [max]="todayDate" [matDatepicker]="picker"
+             placeholder="{{view?.placeHolderField[2].fields.placeHolderText}}"   #inputDate  (dateChange)="validateDate(inputDate)" #inputDate>
+
+             <mat-datepicker-toggle [disabled]="false" matSuffix [for]="picker">
+                  <mat-icon fontSet="fa" fontIcon="fa-times-circle"></mat-icon>
+                  <mat-icon id="hide-mat-icon" matDatepickerToggleIcon></mat-icon>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-datepicker-toggle>
+                <div class="calendar-btn">
+                  <i class="far fa-calendar-alt fa-lg" aria-hidden="true"></i>
+                </div>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+
+              <div *ngIf="(updateProfileForm.get('dateOfBirth').touched && 
+      updateProfileForm.get('dateOfBirth').invalid) || inputDate.invalid" class="alert alert-danger">
+                <span class="error font-color-red" *ngIf="updateProfileForm.get('dateOfBirth').hasError('required') &&
+        (!updateProfileForm.get('dateOfBirth').errors.matDatepickerParse && !updateProfileForm.get('dateOfBirth').errors.matDatepickerParse?.text)
+        && updateProfileForm.get('dateOfBirth').touched">
+                {{view?.authField[4].fields.authField}}
+                </span>
+                <span class="error font-color-red" *ngIf="updateProfileForm.get('dateOfBirth').hasError('matDatepickerMax') || (updateProfileForm.get('dateOfBirth').errors?.matDatepickerParse?.text) || updateProfileForm.get('dateOfBirth').hasError('matDatepickerMin')">
+                  {{view?.authField[5].fields.authField}}
+                </span>
+                <span class="error font-color-red" *ngIf="inputDate.invalid && updateProfileForm.get('dateOfBirth').invalid==false">
+                {{view?.authField[5].fields.authField}}
+                </span>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-6" data-for="name">
+            <div class="form-group">
+
+              <input tabindex="0" type="tel" class="form-control" name="phone" data-form-field="Phone" formControlName="phone" placeholder="{{view?.placeHolderField[3].fields.placeHolderText}}"
+                minlength="16" maxlength="16" required (input)="updatePhone(updateProfileForm.get('phone'))">
+              <div *ngIf="updateProfileForm.get('phone').touched && updateProfileForm.get('phone').invalid" class="alert alert-danger">
+                <span class="error font-color-red" *ngIf="updateProfileForm.get('phone').hasError('required') && updateProfileForm.get('phone').touched">
+                  {{view?.authField[6].fields.authField}}
+                </span>
+
+                <span class="error font-color-red" *ngIf="updateProfileForm.get('phone').hasError('minlength') && updateProfileForm.get('phone').touched">
+                  {{view?.authField[7].fields.authField}}
+                </span>
+                <span class="error font-color-red" *ngIf="updateProfileForm.get('phone').hasError('maxlength') && updateProfileForm.get('phone').touched">
+                  {{view?.authField[7].fields.authField}}
+                </span>
+              </div>
+
+
+            </div>
+          </div>
+
+
+        </div>
+
+
+        <div class="row row-sm-offset">
+          <div class="col-md-6" data-for="email">
+            <div class="form-group">
+              <input type="text" class="form-control" autocorrect="off" name="email" data-form-field="Email" formControlName="email" placeholder="Email">
+              <div *ngIf="updateProfileForm.get('email')?.touched && updateProfileForm.get('email')?.invalid" class="alert alert-danger">
+                  <span class="error font-color-red" *ngIf="updateProfileForm.get('email')?.hasError('required') && updateProfileForm.get('email')?.touched">
+                      {{view?.authField[8].fields.authField}}
+                  </span>
+                  <span class="error font-color-red" *ngIf="updateProfileForm.get('email')?.getError('patternInvalid')?.text && updateProfileForm?.get('email').invalid">
+                      {{updateProfileForm.get('email').getError('patternInvalid').text}}
+                  </span>
+                <!-- <span class="error font-color-red" *ngIf="updateProfileForm.get('email').getError('patternInvalid').text && updateProfileForm.get('email').invalid">
+                  {{updateProfileForm.get('email').getError('patternInvalid').text}}
+                </span> -->
+
+              </div>
+            </div>
+
+
+          </div>
+          <div class="col-md-6" data-for="language">
+            <div class="form-group language-part select-arrow">
+              <select type="text" class="form-control" name="language" data-form-field="Language" required
+                placeholder="test" formControlName='language'>
+                <option value="Language" disabled>{{view?.placeHolderField[5].fields.placeHolderText}}</option>
+                <option value="E">{{view?.languageTextEnglish}}</option>
+                <option value="S">{{view?.languageTextSpanish}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row input-group-btn  horizontal-spacing-left-5 horizontal-spacing-right-5">
+            <button href="" type="submit" class="btn btn-primary btn-form display-4 col-md-4"
+             [disabled]="updateProfileForm.invalid || !updateProfileForm.dirty"><strong>{{view?.buttonText}}</strong></button>
+        </div>
+      </form>
+      <app-notify *ngIf="showMessage" inputMessage="SUCCESS"></app-notify>
+    </div>
+  </div>
+</div>

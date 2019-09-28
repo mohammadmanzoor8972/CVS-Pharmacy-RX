@@ -1,0 +1,43 @@
+/* Copyright (c) 2016 InComm */
+$siteRoot: 'myvanilla';
+$image-path: '../images/icons' !default;
+$fallback-extension: 'png' !default;
+
+$font-path: '/static/#{$siteRoot}/fonts' !default;
+
+$base-line-height: 12;
+
+// Media queries Breakpoints
+$screen-xs: 479px; 
+$screen-sm: 767px; 
+$screen-md: 992px;
+$screen-lg: 1200px;
+
+// Font Names
+
+$fonts: ("'ProximaNovaAltRegular', Helvetica, Arial, sans-serif") ("'MuseoSlab-100', Helvetica, Arial, sans-serif") ("'MuseoSlab-500', Helvetica, Arial, sans-serif");
+$font-sizes: (12px 14px 18px 20px 24px 26px 36px 40px 48px);
+
+$font-0: 'ProximaNovaAltRegular', Helvetica, Arial, sans-serif;
+$font-1: 'MuseoSlab-100', Helvetica, Arial, sans-serif;
+$font-5: 'MuseoSlab-500', Helvetica, Arial, sans-serif;
+
+// Font weights
+$font-thin: 100;
+$font-extra-light: 200;
+$font-ultra-light: 200;
+$font-light: 300;
+$font-normal: 400;
+$font-book: 400;
+$font-regular: 400;
+$font-medium: 500;
+$font-semi-bold: 600;
+$font-demi-bold: 600;
+$font-bold: 700;
+$font-extra-bold: 800;
+$font-ultra-bold: 900;
+$font-heavy: 900;
+$font-black: 900;
+$font-ultra: 900;
+$font-ultra-black: 900;
+$font-extra-ultra: 900;

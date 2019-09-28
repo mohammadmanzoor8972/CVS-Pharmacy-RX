@@ -1,0 +1,113 @@
+// Settings
+
+/* Font sizes and line heights
+ *
+ * Format: (font-size line-height)
+ *
+ */
+$fontsizes: (8px 0px) (9px 0px) (11px 14px) (12px 0)  (12px 15px) (12px 22px)(13px 0) (13px 16px) (13px 18px) (13px 20px) (13px 24px) (14px 0) (14px 9px) (14px 16px) (14px 21px) (15px 0) (15px 18px) (15px 20px) (15px 23px) (15px 26px) (16px 0) (16px 16px) (16px 24px) (16px 46px) (18px 0) (18px 18px) (18px 20px) (18px 21px) (18px 24px) (20px 0) (20px 24px) (20px 27px) (20px 28px) (20px 22px) (21px 40px)(22px 0)(24px 0px) (24px 23px) (27px 40px) (26px 0) (27px 40px) (28px 40px)  (30px 42px)  (32px 0px) (32px 34px) (32px 36px) (35px 40px) (40px 44px) (40px 60px) (44px 48px) (45px 0) (42px 46px) (42px 60px)(43px 40px) (56px 40px);
+
+/* Font color styles
+ *
+ * Format: ("colorname" rgbvalue)
+ *
+ */
+$colors: ("brandcolor" $brandColor) ("colorblack" $colorBlack) ("colorwhite" $colorWhite) ("colorgreen" $brandColorGreen) ("colorblue" $brandColorBlue);
+
+/* Font family styles
+ *
+ * Format: ("fontShortName" <Family for normal> [<Family for bold/Font Weight>] [<Family for light/Font Weight>])
+ *
+ */
+$fontfamilies: ("fontHN" HelveticaNeue 700 400)
+               ("fontHNSTD" HelveticaNeueSTD 700 400);
+               
+
+// Helper classes
+
+.text-upper {
+  text-transform: uppercase;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+/* Create font family classes */
+@each $font in $fontfamilies {
+  /* create font name */
+  .#{nth($font,1)} {
+    font-family: nth($font, 2);
+  }
+
+  /* create bold style if applicable */
+  @if (length($font) >= 3) {
+    $bold: nth($font, 3);
+    .#{nth($font,1)}.font-bold {
+      @if (type-of($bold) != number) {
+        font-family: nth($font, 3);
+      } @else {
+        font-weight: nth($font, 3);
+      }
+    }
+  }
+  /* create light style if applicable, must have bold specified or "" */
+  @if (length($font) >= 4) {
+    $light: nth($font, 4);
+    .#{nth($font,1)}.font-light {
+      @if (type-of($light) != number) {
+        font-family: nth($font, 4);
+      } @else {
+        font-weight: nth($font, 4);
+      }
+    }
+  }
+}
+
+
+/* Build font colors */
+@each $color in $colors {
+  .font-color-#{nth($color,1)} {
+    color: nth($color, 2);
+  }
+}
+
+
+// Create font styles
+@each $font in $fontsizes {
+  $lh: nth($font, 2);
+  $nlh: if($lh == 0, initial, $lh);
+  .font#{nth($font,1)}#{if($lh == 0, '', $lh + 'lh')} {
+    font-size: nth($font, 1);
+    line-height: $nlh;
+  }
+}
+// XSmall / Small font override styles
+@media (max-width: $screen-md - 1) {
+  @each $font in $fontsizes {
+    $lh: nth($font, 2);
+    $nlh: if($lh == 0, initial, $lh);
+    $calculatedlh: if($lh > 0, $lh * 0.75, $nlh);
+
+    $originalsize: nth($font,1);
+    $calculatedsize: nth($font,1) * 0.75;
+    $newfontsize: if($calculatedsize < 11, 11px, $calculatedsize);
+
+    .font#{nth($font,1)}#{if($lh == 0, '', $lh + 'lh')} {
+      font-size: $newfontsize;
+      line-height: $calculatedlh;
+    }
+
+    /* hack to allow initial font-size to override media query */
+    .font#{nth($font,1)}#{if($lh == 0, '', $lh + 'lh')}.font-restrict-adjust {
+      font-size: $originalsize;
+      line-height: $nlh;
+    }
+  }
+}
+
+
+@font-face {
+  font-family: "dls-icons";
+  src: url("../src/assets/fonts/dls-icons.woff") format('woff');
+}

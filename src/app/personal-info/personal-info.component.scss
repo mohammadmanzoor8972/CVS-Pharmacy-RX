@@ -1,0 +1,72 @@
+
+  .input-group-btn {
+    display: block;
+    text-align: center;
+  }
+  .calander-input {
+    width: 265px;
+    &.calender-date{
+      width:100%;
+      .mat-form-field{
+         width:100%;
+      }
+    }
+}
+ :host /deep/ .mat-form-field-flex{
+  background: #fff;
+  font-family: 'HelveticaNeue';
+  border: 0;
+  font-size: 16px;
+  text-align: left;
+  vertical-align: middle;
+  border-radius: 0;
+  height: 55px;
+  padding: 0px 12px;
+}
+.language-part{
+  position: relative;
+}
+.language-part:after{
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 9px 9px 0px 9px;
+  border-color: #6c757d transparent transparent transparent;
+  top: 31px;
+  right: 18px;
+  pointer-events: none;
+}
+  
+
+
+//Date picker override Css
+input[type="date"]::before {
+	color: #999999;
+	content: attr(placeholder)!important;
+}
+input[type="date"] {
+	color: #ffffff;
+}
+input[type="date"]:focus,
+input[type="date"]:valid {
+	color: #666666;
+}
+input[type="date"]:focus::before,
+input[type="date"]:valid::before {
+	content: "" !important;
+}
+
+.pswdLimits {
+  line-height: 9px;
+}
+
+#passwordSideText {
+  top: 7%;
+}
+
+.sideText {
+  margin: 5px;
+}
+

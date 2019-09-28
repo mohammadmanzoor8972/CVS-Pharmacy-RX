@@ -1,0 +1,174 @@
+/* Extra small helper classes */
+$screen-sizes: 0px, $screen-xs, $screen-sm, $screen-md, $screen-lg;
+$screen-size-abbrs: "", xs, sm, md, lg;
+$screen-size-names: ("", Extra small, Small, Medium, Large);
+$directions: top bottom left right;
+$horizontal-directions: left right;
+$vertical-directions: top bottom;
+$base-spacing: 5px;
+$spacingmaxnumber: 10;
+
+$i: length($screen-sizes);
+$j: 1;
+$media: "";
+@while ($i >= 1) {
+  /* Screen size: #{nth($screen-size-names,$i)} */
+  @if $i == length($screen-sizes) {
+    $media: "screen";
+  } @else {
+    @if $i == 2 {
+      $media: "(max-width: #{nth($screen-sizes, $i+1) - 1})";
+    } @else {
+      $media: "(max-width: #{nth($screen-sizes, $i+1) - 1})";
+    }
+  }
+  @if ($i == 2) {
+    $j: 1;
+  } @else {
+    $j: $i;
+  }
+  @media #{$media} and (min-width: nth($screen-sizes, $j)) {
+    // Collapse all padding for screen size
+    .collapse-padding-#{nth($screen-size-abbrs,$i)} {
+      padding: 0 !important;
+    }
+
+    // Collapse padding for specific directions for screen size
+    @each $direction in $directions {
+      .collapse-padding-#{nth($screen-size-abbrs,$i)}-#{$direction} {
+        padding-#{$direction}: 0 !important;
+      }
+    }
+
+    // Collapse all margin for screen size
+    .collapse-margin-#{nth($screen-size-abbrs,$i)} {
+      margin: 0 !important;
+    }
+
+    // Collapse margin for specific directions for screen size
+    @each $direction in $directions {
+      .collapse-margin-#{nth($screen-size-abbrs,$i)}-#{$direction} {
+        margin-#{$direction}: 0 !important;
+      }
+    }
+    $y: 1;
+    @while ($y < $spacingmaxnumber + 1) {
+      // Vertical spacing
+      .vertical-spacing-#{nth($screen-size-abbrs,$i)}-#{$y} {
+        @each $ordinal in $vertical-directions {
+          margin-#{$ordinal}: $base-spacing*$y !important;
+        }
+      }
+
+      //Horizontal spacing
+      .horizontal-spacing-#{nth($screen-size-abbrs,$i)}-#{$y} {
+        @each $ordinal in $horizontal-directions {
+          margin-#{$ordinal}: $base-spacing*$y !important;
+        }
+      }
+
+      // Vertical padding
+      .vertical-padding-#{nth($screen-size-abbrs,$i)}-#{$y} {
+        @each $ordinal in $vertical-directions {
+          padding-#{$ordinal}: $base-spacing*$y !important;
+        }
+      }
+
+      // Horizontal padding
+      .horizontal-padding-#{nth($screen-size-abbrs,$i)}-#{$y} {
+        @each $ordinal in $horizontal-directions {
+          padding-#{$ordinal}: $base-spacing*$y !important;
+        }
+      }
+
+      @each $direction in $horizontal-directions {
+        .horizontal-spacing-#{nth($screen-size-abbrs,$i)}-#{$direction}-#{$y} {
+          margin-#{$direction}: $base-spacing*$y !important;
+        }
+        .horizontal-padding-#{nth($screen-size-abbrs,$i)}-#{$direction}-#{$y} {
+          padding-#{$direction}: $base-spacing*$y !important;
+        }
+      }
+      @each $direction in $vertical-directions {
+        .vertical-spacing-#{nth($screen-size-abbrs,$i)}-#{$direction}-#{$y} {
+          margin-#{$direction}: $base-spacing*$y !important;
+        }
+        .vertical-padding-#{nth($screen-size-abbrs,$i)}-#{$direction}-#{$y} {
+          padding-#{$direction}: $base-spacing*$y !important;
+        }
+      }
+      $y: $y + 1;
+    }
+  }
+  $i: $i - 1;
+}
+
+/* Global helper classes */
+
+.collapse-padding {
+  padding: 0 !important;
+}
+
+.collapse-margin {
+  margin: 0 !important;
+}
+
+/* Global collapse */
+
+@each $direction in $directions {
+  .collapse-padding-#{$direction} {
+    padding-#{$direction}: 0 !important;
+  }
+  .collapse-margin-#{$direction} {
+    margin-#{$direction}: 0 !important;
+  }
+}
+
+/* Vertical/Horizontal spacing */
+$y: 1;
+@while ($y < $spacingmaxnumber + 1) {
+  .vertical-spacing-#{$y} {
+    margin-top: $base-spacing*$y;
+    margin-bottom: $base-spacing*$y;
+  }
+  .horizontal-spacing-#{$y} {
+    margin-left: $base-spacing*$y;
+    margin-right: $base-spacing*$y;
+  }
+
+  .vertical-padding-#{$y} {
+    padding-top: $base-spacing *$y;
+    padding-bottom: $base-spacing*$y;
+  }
+  .horizontal-padding-#{$y} {
+    padding-left: $base-spacing*$y;
+    padding-right: $base-spacing*$y;
+  }
+
+  @each $direction in $horizontal-directions {
+    .horizontal-spacing-#{$direction}-#{$y} {
+      margin-#{$direction}: $base-spacing*$y;
+    }
+    .horizontal-padding-#{$direction}-#{$y} {
+      padding-#{$direction}: $base-spacing*$y;
+    }
+  }
+  @each $direction in $vertical-directions {
+    .vertical-spacing-#{$direction}-#{$y} {
+      margin-#{$direction}: $base-spacing*$y;
+    }
+    .vertical-padding-#{$direction}-#{$y} {
+      padding-#{$direction}: $base-spacing*$y;
+    }
+  }
+  $y: $y + 1;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.container-padding {
+  padding-left: $grid-gutter-width/2;
+  padding-right: $grid-gutter-width/2;
+}

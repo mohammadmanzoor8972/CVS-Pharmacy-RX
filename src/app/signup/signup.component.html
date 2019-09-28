@@ -1,0 +1,63 @@
+<div class="form-group vertical-spacing-bottom-5">
+  <h1 class="mainH1 col-lg-12 collapse-padding vertical-spacing-bottom-2">{{view?.fields.topLabel}}</h1>
+
+  <form [formGroup]="cardInfoForm" (submit)='onSignUp(cardInfoForm)'>
+    <div class="form-group vertical-spacing-bottom-5" [ngClass]="{'numFieldSpanish': setSpanish == 'es'}">
+      <input type="tel" name="cardNumber" class="form-control" id="cardNumber" placeholder="{{view?.fields.cardNumberLabel}}" 
+      minlength='19'
+        maxlength="19" formControlName='cardNumber' required (input)="cardTransform(cardInfoForm.get('cardNumber'))">
+      <div *ngIf="cardInfoForm.get('cardNumber').invalid && cardInfoForm.get('cardNumber').touched" class="alert alert-danger">
+        <div *ngIf="cardInfoForm.get('cardNumber').hasError('required') && cardInfoForm.get('cardNumber').touched">
+          {{view?.fields.authField[2].fields.authField}}
+        </div>
+        <div *ngIf="cardInfoForm.get('cardNumber').hasError('minlength') && cardInfoForm.get('cardNumber').touched">
+          {{view?.fields.authField[3].fields.authField}}
+        </div>
+        <div *ngIf="cardInfoForm.get('cardNumber').hasError('maxlength') && cardInfoForm.get('cardNumber').touched">
+          {{view?.fields.authField[3].fields.authField}}
+        </div>
+      </div>
+    </div>
+    <div class="validation"></div>
+    <div class="form-group vertical-spacing-bottom-5" id="sign-up-date-picker" [ngClass]="{'dateFieldSpanish': setSpanish == 'es'}">
+      <mat-form-field id="sign-up-date-picker-input" [floatPlaceholder]="'never'" (click)="picker.open()">
+        <input matInput autocomplete="off"  formControlName='dateOfBirth' id="datePicker" 
+         [min]="minDate" [max]="todayDate" [matDatepicker]="picker"
+          placeholder="{{view?.fields.dOBLabel}}"  (keyup)="validateDate($event.target)" 
+          (dateChange)="validateDate(inputDate)"   #inputDate>
+        <mat-datepicker-toggle [disabled]="false" matSuffix [for]="picker">
+          <mat-icon fontSet="fa" fontIcon="fa-times-circle"></mat-icon>
+          <mat-icon id="hide-mat-icon" matDatepickerToggleIcon></mat-icon>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-datepicker-toggle>
+        <div class="calendar-btn">
+          <i class="far fa-calendar-alt fa-lg" aria-hidden="true"></i>
+        </div>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <div *ngIf="(cardInfoForm.get('dateOfBirth').touched && 
+      cardInfoForm.get('dateOfBirth').invalid) || inputDate?.invalid" class="alert alert-danger">
+
+        <span class="error font-color-red" *ngIf="cardInfoForm.get('dateOfBirth').hasError('required') &&
+        (!cardInfoForm.get('dateOfBirth').errors.matDatepickerParse && 
+        !cardInfoForm.get('dateOfBirth').errors.matDatepickerParse?.text)">
+          {{view?.fields.authField[0].fields.authField}}
+        </span>
+        <span class="error font-color-red" *ngIf="cardInfoForm.get('dateOfBirth').hasError('matDatepickerMax') || (cardInfoForm.get('dateOfBirth').errors?.matDatepickerParse?.text) || cardInfoForm.get('dateOfBirth').hasError('matDatepickerMin')">
+          {{view?.fields.authField[1].fields.authField}}
+        </span>
+        <span class="error font-color-red" *ngIf="inputDate.invalid && cardInfoForm.get('dateOfBirth').invalid==false">
+          {{view?.fields.authField[1].fields.authField}}
+        </span>
+      </div>
+    </div>
+    <div id="submitBtnDiv" class="row horizontal-padding-xs-4 horizontal-padding-sm-4 horizontal-padding-4">
+      <button id="submitBtn" type="submit" class="btn btn-primary blue btn-block btn-md col-lg-4 signUp col-sm-12 collapse-padding-sm"
+        [disabled]="cardInfoForm.invalid || ((cardInfoForm.get('dateOfBirth').touched && 
+        cardInfoForm.get('dateOfBirth').invalid) || inputDate.invalid)" value="Sign Up">{{view?.fields.signUpButtonText}}
+      </button>
+      <span class="signInPreText col-lg-6 vertical-spacing-top-4 col-sm-12">{{view?.fields.signInText}}
+        <a class="linkATag" [routerLink]="['/sign-in']">{{view?.fields.signInHereLink}}</a>
+      </span>
+    </div>
+  </form>

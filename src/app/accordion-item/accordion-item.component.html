@@ -1,0 +1,23 @@
+<div *ngIf="accordionView" [ngClass]="{'faq-sub-item-accordion': (isHelpPage && isSubAccordionItem),
+                'faq-item-accordion': (isHelpPage && !isSubAccordionItem),
+                'landing-page-item-accordion': (!isHelpPage)}">
+
+  <div class="faq-item-header font-color-brandcolor10 font16px24pxlh font-light fontBS" [ngStyle]="{'background-image': 'url(' + (isCollapsed ? getImage(itemPlusSign) : getImage(itemMinusSign)) + ')'}"
+    [ngClass]="{'accordion-plus': isCollapsed, 'accordion-minus': !isCollapsed}" [innerHTML]="accordionView?.faqHeader" (click)="toggleIsCollapsed()">
+
+  </div>
+
+  <div *ngIf="accordionView?.faqText" class="faq-item-text link-style-3 fontHN font15px23pxlh" [ngClass]="{'collapsed': isCollapsed, 'not-collapsed': !isCollapsed}"
+    [innerHTML]="accordionView?.faqText">
+  </div>
+
+  <!--sub accordion items-->
+  <div *ngIf="!isCollapsed" class="faq-sub-item-container" [ngClass]="{'collapsed': isCollapsed, 'not-collapsed': !isCollapsed}">
+
+    <div *ngIf="accordionView?.faqSubItems">
+      <app-accordion-item *ngFor="let subItem of accordionView?.faqSubItems" [accordionView]="subItem.fields" [itemMinusSign]="subItemMinusSign"
+        [itemPlusSign]="subItemPlusSign" [isSubAccordionItem]=true [isHelpPage]=isHelpPage></app-accordion-item>
+
+    </div>
+  </div>
+</div>

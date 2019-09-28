@@ -1,0 +1,29 @@
+#page-tab-headers .tab-headers li{
+  display: table-cell;
+  list-style: none!important;
+  margin-left: 0!important;
+  float: left;
+  width: 20%;
+  text-align: center;
+  background: #d0d0d0;
+  padding: 10px 1em 10px;
+  font-family: OpenSans-Regular;
+  font-size: 18px;
+  line-height: 23px;
+  color: #0093c9;
+  text-decoration: none!important;
+  font-weight: 400;
+  height: 100%!important;
+}
+.nav-tabs>li>a{border-radius:0px; width:100%;text-align: center;border-right:1px solid #fff;}
+ul{&.nav-tabs{&.UsingYourCard{background-color:#d0d0d0;}}}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{background-color:#022564;color:#fff;width:100%;text-align: center;}
+
+
+
+@media (max-width: 375px) {
+.nav-tabs>li>a{width:112%;}
+
+}
+

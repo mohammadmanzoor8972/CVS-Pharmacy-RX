@@ -1,0 +1,26 @@
+
+h5 {
+    text-align: center;
+}
+
+.contentDiv {
+    color: #192e54;
+}
+
+.btnDiv {
+    text-align: center;
+
+    .faqBtn {
+        text-decoration: none;
+        &:hover {
+            color: unset;
+        }
+    }
+
+}
+
+@media (min-width: 770px) {
+    .cardDiv {
+        margin-left: 11vw;
+    }    
+}

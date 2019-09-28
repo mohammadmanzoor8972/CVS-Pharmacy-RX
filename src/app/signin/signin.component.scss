@@ -1,0 +1,60 @@
+#signupBlock{
+    min-height: 350px;
+    margin-top: 30px;
+}
+
+.bottomATag {
+    text-decoration: underline;
+
+    &:hover {
+        color: #003288;
+    }
+}
+
+#signInBtn {
+    font-size: 23px;
+}
+
+div span > a:last-child {
+    padding-left: 11px;
+}
+
+@media ( max-width: 991px ) {
+   
+    .h1Div {
+        width: 100%;
+        text-align: center;
+        #mainH1 {
+            font-size: 1.4em;
+        }
+    }
+
+    .vertical-spacing-bottom-5 {
+        margin-bottom: 10px;
+    }
+    
+    #username {
+        &::placeholder {
+            text-align: center;
+        }
+    }
+    #password {
+        &::placeholder {
+            text-align: center;
+        }
+    }
+
+    #submitBtnDiv {
+        width: 100%;
+        justify-content: center;
+        margin: 0;
+
+        #signInBtn {
+            width: 75%;
+            font-weight: bold;
+            &:disabled {
+                font-weight: unset;
+            }
+        }
+    }
+}

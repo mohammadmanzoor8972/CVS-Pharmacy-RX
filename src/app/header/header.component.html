@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-red">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['/sign-up']">
+      <img class="cvsLogo" src="{{view?.leftLogo?.fields.file.url}}" alt="">
+    </a>
+    <button id="mobileMenuIcon" (click)="toggleMobileMenu()" class="navbar-toggler" type="button">
+      <span>
+        <img class="burgerBtn-Img" src="{{view?.rightSideMobileImg.fields.file.url}}" alt="">
+      </span>
+    </button>
+    <!-- enable logout after login -->
+    <!-- Removing the logic for the logout button to show -->
+    <!--   -->
+   
+      <div class="inCommLogoDiv">
+        <ul class="navbar-nav">
+            <button id="desktopLogoutBtn" type="button" class="btn btn-default horizontal-spacing-3 logoutLoginBtn vertical-spacing-top-2" 
+            *ngIf="router.url != '/sign-in' && router.url != '/signup' && router.url != '/personal-info' && router.url != '/' && isLoggedIn" 
+            (click)="logout()"    
+             >{{view?.logoutBtn}}</button>
+             <button id="desktopLogoutBtn" type="button" [routerLink]="['/sign-in']" class="btn btn-default horizontal-spacing-3 logoutLoginBtn vertical-spacing-top-2" 
+             *ngIf="router.url != '/sign-in' && router.url != '/sign-up' && router.url != '/' &&   !router.url.includes('/personal-info') && !isLoggedIn">{{view?.loginBtn}}</button>
+            <span class="rightLogoText vertical-spacing-top-4 font-color-colorwhite">{{view?.headerText}}</span>
+          <li class="nav-item">
+            <a class="desktopATag nav-link" href="{{view?.rightLogoLink}}">
+              <img src="{{view?.rightLogo.fields.file.url}}" alt="">
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    <!--      Mobile Menu       -->
+    <div class="mobileMenu-Div" [hidden]="!closeMobileMenu" (window:mouseup)="autoCloseMobileMenu($event)">
+      <div *ngFor="let links of view?.toolbarMenuLinks" class="burgerBtn-Div container" [ngClass]="{'loggedOutState': !isLoggedIn}">
+        <div class="section-Div">
+          <h6 class="sectionHeader">{{links?.fields.headertitle}}</h6>
+          <ul class="section-List">
+            <li id="li-Links" *ngFor="let linkNames of links?.fields.links">
+              <a id="a-Links" [routerLink]="[linkNames.fields.linkUrl]">{{linkNames.fields.linkName}}</a>
+            </li>
+            <hr>
+          </ul>
+        </div>
+      </div>
+      <div class="logoutBtnDiv">
+        <button *ngIf="!isLoggedIn" id="mobileLogoutLoginBtn" type="button" class="btn btn-default logoutLoginBtn" (click)="login()"> 
+          {{view?.loginBtn}}
+        </button>
+        <button *ngIf="isLoggedIn" id="mobileLogoutLoginBtn" type="button" class="btn btn-default logoutLoginBtn" (click)="logout()"> 
+          {{view?.logoutBtn}}
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,31 @@
+<app-notify *ngIf="!showMessage"></app-notify>
+<div class="container" id="toppaddingPage">
+  <div class="row justify-content-center">
+      <div class="media-container-column col-lg-6" data-form-type="formoid">
+          <h1 class="text-center vertical-spacing-bottom-8">Forgot Username</h1>
+          <form *ngIf="!showMessage"  [formGroup]="forgotUserNameForm" (submit)='onSubmit()'>
+            <div class="row row-sm-offset">
+                  <div class="col-md-12" data-for="email">
+                      <div class="form-group">
+                          <input type="text" class="form-control" name="email" data-form-field="Email" formControlName="email" placeholder="Email address">
+                          <div *ngIf="forgotUserNameForm.get('email').touched && forgotUserNameForm.get('email').invalid" class="alert alert-danger">
+                              <span class="error font-color-red" *ngIf="forgotUserNameForm.get('email').hasError('required') && forgotUserNameForm.get('email').touched">
+                                Email is required
+                               </span>
+                               <span class="error font-color-red" *ngIf="forgotUserNameForm.get('email').getError('patternInvalid')?.text && forgotUserNameForm.get('email').invalid">
+                               {{forgotUserNameForm.get('email').getError('patternInvalid')?.text}}
+                               </span>
+                         </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row input-group-btn">
+                <div class="col-md-12"> 
+                <button type="submit" class="btn btn-primary btn-form display-4 col-md-4" [disabled]='forgotUserNameForm.invalid' value="Submit" >Submit</button>
+                </div>
+                </div>
+          </form>
+          <app-notify *ngIf="showMessage" inputMessage="USERNAME_EMAIL"></app-notify>
+      </div>
+  </div>
+</div>

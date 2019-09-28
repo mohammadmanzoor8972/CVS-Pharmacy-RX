@@ -1,0 +1,109 @@
+
+.belowHeaderText {
+    margin-bottom: 2.5em;
+}
+
+.supportNumber-P {
+    margin-bottom: 1px;
+}
+
+p {
+    color: rgb(25, 46, 84);
+}
+
+.formDiv {
+    width: 76%;
+}
+
+.formInput {
+    height: 48px;
+}
+
+.leftInput {
+    margin: 0 15px 20px 7.5%;
+}
+
+.textInput {
+    margin-left: 7.5%;
+    max-width: 85.3%;
+    height: 48px;
+}
+
+.formBtn {
+    width: 13vw;
+    height: 6vh;
+    margin: 20px 37%;
+    padding-top: 1%;
+}
+
+:host /deep/ .mat-form-field-flex{
+    background: #fff;
+    font-family: 'HelveticaNeue';
+    border: 0;
+    font-size: 16px;
+    text-align: left;
+    vertical-align: middle;
+    border-radius: 0;
+    height: 55px;
+    padding: 0px 12px;
+  }
+
+.mat-form-field{
+    display: block;
+}  
+.calendar-btn{
+    position: absolute;
+    width: 20px;
+    right: -18px;   
+    top: 9px;
+    font-size: 20px;
+}
+@media (max-width: 1199px) {
+    .textInput {
+        max-width: 85.5%;
+    }
+}
+
+@media (max-width: 992px) {
+    .textInput {
+        max-width: 86.3%;
+    }
+}
+
+@media (max-width: 767px) {
+    .textInput {
+        max-width: 87.4%;
+    }
+}
+
+@media (max-width: 599px) {
+    .textField {
+        flex-basis: unset;
+        max-width: unset;
+    }
+
+    .spacerDiv {
+        display: none;
+    }
+
+    .formDiv {
+        width: unset;
+    }
+
+    .supportForm input {
+        text-align: center;
+    }
+
+    .leftInput, .rightInput {
+        margin: 10px 0;
+        flex-basis: unset;
+        max-width: unset;
+    }
+
+    .textInput[_ngcontent-c5] {
+        margin: 10px 0;
+        max-width: unset;
+        flex-basis: unset;
+        height: 100px;
+    }
+}

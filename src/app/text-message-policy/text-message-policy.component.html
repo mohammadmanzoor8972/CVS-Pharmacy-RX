@@ -1,0 +1,15 @@
+<div class="container" id="toppaddingPage"  *ngIf="view">
+    <div class="row justify-content-center">
+        <div id="" class="media-container-column col-lg-10" data-form-type="formoid">
+            <h1 class="text-center vertical-spacing-bottom-8">{{view?.mainHeader}}</h1>
+            <div class="col-md-12 mb-4">
+                <h4 [innerHtml]="view?.subHeader"></h4>
+                <div *ngFor="let text of view?.sectionContent" class="sectionContent">
+                    <p *ngIf="text.fields.shortDescription" class="shortDescript" [innerHtml]="text.fields.shortDescription"></p>
+                    <p *ngIf="text.fields.description" class="descriptField" [innerHtml]="text.fields.description"></p>
+                    <p *ngIf="text.fields.description2" class="listField" [innerHtml]="text.fields.description2"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

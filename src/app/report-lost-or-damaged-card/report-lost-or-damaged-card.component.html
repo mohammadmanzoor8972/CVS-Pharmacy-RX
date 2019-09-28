@@ -1,0 +1,151 @@
+<app-notify *ngIf="!showMessage"></app-notify>
+<div class="container" id="toppaddingPage">
+  <div class="row justify-content-center">
+    <div class="media-container-column col-lg-9" data-form-type="formoid">
+      <h1 class="text-center">{{view?.titleLabel}}</h1>
+      <form *ngIf="!showMessage" [formGroup]='reportLostDamagedForm' (submit)='onFormSubmit(reportLostDamagedForm.value)'>
+        <div class="row row-sm-offset">
+          <div class="col-md-6" data-for="firstName">
+            <div class="form-group">
+              <input type="text" class="form-control" name="name" data-form-field="firstName" placeholder="{{view?.firstNameLabel}}" formControlName="firstName"
+                (input)="allowCharacters(reportLostDamagedForm.get('firstName'))" required>
+              <div *ngIf="reportLostDamagedForm.get('firstName').touched && reportLostDamagedForm.get('firstName').invalid" class="alert alert-danger">
+                <span class="error font-color-red" *ngIf="reportLostDamagedForm.get('firstName').hasError('required') && reportLostDamagedForm.get('firstName').touched">
+                  First Name is required
+                </span>
+                <span class="error font-color-red" *ngIf="reportLostDamagedForm.get('firstName').hasError('minlength') && reportLostDamagedForm.get('firstName').touched">
+                  Minimum of 2 characters
+                </span>
+                <span class="error font-color-red" *ngIf="reportLostDamagedForm.get('firstName').hasError('maxlength') && reportLostDamagedForm.get('firstName').touched">
+                  Maximum of 50 characters
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6" data-for="lastName">
+            <div class="form-group">
+              <input type="text" class="form-control" name="lastName" data-form-field="lastName" placeholder="{{view?.lastNameLabel}}"
+                formControlName="lastName" (input)="allowCharacters(reportLostDamagedForm.get('lastName'))">
+              <div *ngIf="reportLostDamagedForm.get('lastName').touched && reportLostDamagedForm.get('lastName').invalid" class="alert alert-danger">
+                <span class="error font-color-red" *ngIf="reportLostDamagedForm.get('lastName').hasError('required') && reportLostDamagedForm.get('lastName').touched">
+                  Last Name is required
+                </span>
+                <span class="error font-color-red" *ngIf="reportLostDamagedForm.get('lastName').hasError('minlength') && reportLostDamagedForm.get('lastName').touched">
+                  Minimum of 2 characters
+                </span>
+                <span class="error font-color-red" *ngIf="reportLostDamagedForm.get('lastName').hasError('maxlength') && reportLostDamagedForm.get('lastName').touched">
+                  Maximum of 50 characters
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row row-sm-offset">
+          <div class="col-md-6" data-for="date">
+            <div class="form-group" id="update-profile-date-picker">
+              <mat-form-field id="sign-up-date-picker-input" [floatPlaceholder]="'never'" (click)="picker.open()" (blur)="picker.open()">
+                <input matInput autocomplete="off"  formControlName='dateOfBirth' id="datePicker"  [min]="minDate" [max]="todayDate" [matDatepicker]="picker"
+                  placeholder="{{view?.datebirthLabel}}"  (dateChange)="validateDate(inputDate)" #inputDate>
+                <mat-datepicker-toggle [disabled]="false" matSuffix [for]="picker" pattern='([12]\d{3}/(0[1-9]|1[0-2])/(0[1-9]|[12]\d|3[01]))'>
+                  <mat-icon fontSet="fa" fontIcon="fa-times-circle"></mat-icon>
+                  <mat-icon id="hide-mat-icon" matDatepickerToggleIcon></mat-icon>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-datepicker-toggle>
+                <div class="calendar-btn">
+                  <i class="far fa-calendar-alt fa-lg" aria-hidden="true"></i>
+                </div>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <div *ngIf="(reportLostDamagedForm.get('dateOfBirth').touched && 
+      reportLostDamagedForm.get('dateOfBirth').invalid) || inputDate.invalid" class="alert alert-danger">
+                <span class="error font-color-red" *ngIf="reportLostDamagedForm.get('dateOfBirth').hasError('required') &&
+        (!reportLostDamagedForm.get('dateOfBirth').errors.matDatepickerParse && !reportLostDamagedForm.get('dateOfBirth').errors.matDatepickerParse?.text)
+        && reportLostDamagedForm.get('dateOfBirth').touched">
+                  Date is Required
+                </span>
+                <span class="error font-color-red" *ngIf="reportLostDamagedForm.get('dateOfBirth').hasError('matDatepickerMax') || (reportLostDamagedForm.get('dateOfBirth').errors?.matDatepickerParse?.text) || reportLostDamagedForm.get('dateOfBirth').hasError('matDatepickerMin')">
+                  Select A Valid Date
+                </span>
+                <span class="error font-color-red" *ngIf="inputDate.invalid && reportLostDamagedForm.get('dateOfBirth').invalid==false">
+                  Select A Valid Date
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6" data-for="phone">
+            <div class="form-group">
+              <input tabindex="0" type="tel" class="form-control" name="phone" data-form-field="Phone" formControlName="phone" placeholder="{{view?.phoneLabel}}"
+                minlength="16" maxlength="16" required (input)="updatePhone(reportLostDamagedForm.get('phone'))">
+              <div *ngIf="reportLostDamagedForm.get('phone').touched && reportLostDamagedForm.get('phone').invalid" class="alert alert-danger">
+                <span class="error font-color-red" *ngIf="reportLostDamagedForm.get('phone').hasError('required') && reportLostDamagedForm.get('phone').touched">
+                  Phone is required
+                </span>
+                <span class="error font-color-red" *ngIf="reportLostDamagedForm.get('phone').hasError('minlength') && reportLostDamagedForm.get('phone').touched">
+                  Incorrect Phone number
+                </span>
+                <span class="error font-color-red" *ngIf="reportLostDamagedForm.get('phone').hasError('maxlength') && reportLostDamagedForm.get('phone').touched">
+                  Incorrect Phone number
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row row-sm-offset">
+          <div class="col-md-6" data-for="email">
+            <div class="form-group">
+              <input type="text" class="form-control" autocorrect="off" name="email" data-form-field="Email" formControlName="email" placeholder="{{view?.emailLabel}}">
+              <div *ngIf="reportLostDamagedForm.get('email').touched && reportLostDamagedForm.get('email').invalid" class="alert alert-danger">
+                <span class="error font-color-red" *ngIf="reportLostDamagedForm.get('email').hasError('required') && reportLostDamagedForm.get('email').touched">
+                  Email is required
+                </span>
+                <span class="error font-color-red" *ngIf="reportLostDamagedForm.get('email')?.getError('patternInvalid')?.text && reportLostDamagedForm.get('email').invalid">
+                  {{reportLostDamagedForm.get('email').getError('patternInvalid').text}}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6" data-for="cardNumber">
+            <div class="form-group">
+              <input type="tel" name="cardNumber" class="form-control" id="cardNumber" placeholder="{{view?.cardNumberLabel}}" minlength='19'
+                maxlength="19" formControlName='cardNumber' (input)="allowNumbers(reportLostDamagedForm.get('cardNumber'))">
+              <div *ngIf="reportLostDamagedForm.get('cardNumber').invalid && reportLostDamagedForm.get('cardNumber').touched" class="alert alert-danger">
+                <div *ngIf="reportLostDamagedForm.get('cardNumber').hasError('minlength') && reportLostDamagedForm.get('cardNumber').touched">
+                  Card Number must be 16 characters long.
+                </div>
+                <div *ngIf="reportLostDamagedForm.get('cardNumber').hasError('maxlength') && reportLostDamagedForm.get('cardNumber').touched">
+                  Card Number must be 16 characters long.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row row-sm-offset">
+          <div class="col-md-6" data-for="lastKnownAmount">
+            <div class="form-group">
+              <input type="text" class="form-control" autocorrect="off" name="lastKnownAmount" data-form-field="lastKnownAmount" formControlName="lastKnownAmount"
+                placeholder="{{view?.balanceLabel}}" [textMask]="{mask: dollarMask,guide: false}" (input)="allowNumber(reportLostDamagedForm.get('lastKnownAmount'))" #inputForm />
+              <div *ngIf="reportLostDamagedForm.get('lastKnownAmount').invalid && reportLostDamagedForm.get('lastKnownAmount').touched"
+              class="alert alert-danger">
+          
+              <div *ngIf="reportLostDamagedForm.get('lastKnownAmount').hasError('min') && reportLostDamagedForm.get('lastKnownAmount').touched">
+                Please enter an amount between $0 and $500.
+              </div>
+              <div *ngIf="reportLostDamagedForm.get('lastKnownAmount').hasError('max') && reportLostDamagedForm.get('lastKnownAmount').touched">
+                Please enter an amount between $0 and $500.
+              </div>
+            </div>
+
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="message-text">{{view?.businessInfo}}</div>
+          </div>
+        </div>
+        <div class="row input-group-btn">
+          <div class="col-md-12">
+            <button href="" type="submit" class="btn btn-primary btn-form display-4 col-md-4" [disabled]="reportLostDamagedForm.invalid || !reportLostDamagedForm.dirty || (inputForm.value.length!=0 && inputForm.invalid)">{{view?.buttonLabel}}</button>
+          </div>
+        </div>
+      </form>
+      <app-notify *ngIf="showMessage" inputMessage="SUCCESS"></app-notify>
+    </div>

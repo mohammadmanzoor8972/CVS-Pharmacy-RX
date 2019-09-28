@@ -1,0 +1,267 @@
+@import 'styles/colors.scss';
+
+body {
+    background-color: #9fdbe7 !important;
+    font-family: "HelveticaNeue";
+  }
+#toppaddingPage{padding-top:40px;}
+  label {
+    font-size: 12px;
+    line-height: 18px;
+    color: $colorFieldLabel;
+    font-family: "HelveticaNeue";
+  
+    font-weight:400;
+  }
+
+.navbar {.inCommLogoDiv ul.navbar-nav span{font-size:10px !important;}}
+  input[type=text], textarea,  input[type=tel],input[type=password],input[type=date],select.form-control {
+
+    background: #fff;
+    font-family: 'HelveticaNeue';
+    border: 0;
+    font-size: 23px;
+    text-align: left;
+    vertical-align: middle;
+    border-radius: 0;
+    height:55px;text-indent: 12px;
+    color: $colorGrey70;
+    font-weight:300;
+  }
+
+//placeholder style
+
+input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="tel"]::placeholder, input[type="number"]::placeholder, input[type="password"]::placeholder
+{
+    color: $colorGrey70;
+    font-family: 'HelveticaNeue';
+    font-weight:300;
+    letter-spacing: 0.254px;
+    font-size:23px;text-indent: 12px;
+  }
+  input::matDatepicker::placeholder, .mat-input-placeholder{color: $colorGrey70;
+    font-family: 'HelveticaNeue';
+    font-weight:300;
+    letter-spacing: 0.254px;
+   
+    color:$colorGrey70;
+    font-size:23px !important;}
+
+    .mat-form-field-label-wrapper {
+      top: -1.2em;
+      padding-top: 2.84375em;
+  }
+  .mat-form-field-infix, .mat-input-infix {
+    padding: .4375em 0;
+    border-top: .42375em solid transparent;
+   }
+
+  .fa-calendar-alt:before{color: $colorGrey70;}
+select.form-control:not([size]):not([multiple]){height:55px;-moz-appearance: none;-webkit-appearance: none;}
+
+
+.mat-form-field-invalid .mat-form-field-label, .mat-focused .mat-form-field-label,.mat-form-field-label{color:$colorGrey70; font-size: 23px;}
+
+//DatePicker CSS
+input.mat-input-element{text-indent:12px;font-size: 23px !important; color: $colorGrey70 !important;}
+.mat-form-field-label-wrapper{color:$colorGrey70; font-family: 'HelveticaNeue';
+  font-weight:300;color: $colorGrey70;
+  letter-spacing: 0.254px;
+  line-height: 40px;
+  font-size:23px;text-indent: 12px;}
+.mat-form-field-wrapper{padding-bottom:0px !important;}
+.mat-form-field-underline{background-color: transparent !important;}
+.mat-form-field-ripple {
+  background-color: transparent !important;
+}
+.mat-form-field-invalid {.mat-form-field-ripple {
+  background-color: transparent !important;
+}
+}
+.alert-danger {
+  color: #fff;
+  background-color: #cc2027;
+  border-color: #cc2027;
+  border-radius: 0px;
+}
+.btn-primary.disabled, .btn-primary:disabled {
+  color: #182d57;
+  background-color: #f1f1f1;
+  border-color: #f1f1f1;font-size: 23px;
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle
+{border: 3px solid #333;
+  background-color: #fff;font-size: 23px;
+  color: #182d57;}
+  .logoutLoginBtn {
+    height: 35px!important;
+    font-size: 15px;
+    line-height: 27px;
+}
+.max-width-980 {
+
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 980px;
+
+  }
+
+.removeMargin {
+  margin: 0;
+}
+
+.removePadding {
+  padding: 0;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+  h1{font-family:"HelveticaNeue";color:$brandColorBlue;font-size:27px;font-weight:700;line-height: 40px;}
+  h4{text-transform: none !important;}
+  a {color: #022663;text-decoration: none;}
+  p{font-family:"HelveticaNeue";color:$colorGrey80;}
+  
+  //scrollbar
+
+  .red{color:#C00000;font-weight: bold;text-decoration: underline;}
+                          
+  .card{border:8px solid #fff;border-radius:0px;}
+  
+  .scrollbar-cyan::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: #cef0f4;
+    border-radius: 0px; }
+  
+  .scrollbar-cyan::-webkit-scrollbar {
+    width: 12px;
+    background-color: #FFF; }
+  
+  .scrollbar-cyan::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: #00bcd4; }
+  
+  
+  .bordered-cyan::-webkit-scrollbar-track {
+    -webkit-box-shadow: none;
+    border: 0px solid #00bcd4;     margin-top: 30px;
+    margin-bottom: 30px;}
+  
+  .bordered-cyan::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: none; }
+  
+  .square::-webkit-scrollbar-track {
+    border-radius: 0 !important; }
+  
+  .square::-webkit-scrollbar-thumb {
+    border-radius: 0 !important; }
+  
+    .select-arrow{
+      position:relative;
+  }
+  .select-arrow:after{
+      position:absolute;
+      content:'';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 9px 9px 0 9px;
+      border-color:  #939598 transparent transparent transparent;
+      top: 28px;
+      right: 12px;
+      pointer-events: none;
+  }
+  
+  select::-ms-expand {
+    display: none;
+  } 
+  
+  select.form-control {
+      text-indent: 0px!important;
+  }
+  
+  .scrollbarDiv {
+    position: relative;
+    overflow-y: scroll;
+    height: 450px; }
+
+    #toppaddingPage{min-height:900px;}
+
+    //Removing the focus of the Angular material date-picker icon 
+    .mat-form-field-prefix .mat-icon-button, .mat-form-field-suffix .mat-icon-button {
+      visibility:hidden !important;
+    }
+            
+    //commented for the review to go for bootstarp tooltip or
+    //  custom
+     #passwordDiv .pswdLimits{
+         position: absolute;
+          width: 70%;
+          left: 90%;
+          font-size: 10px;
+          top: 15%;
+          z-index: 9999;     
+      } 
+
+      @media only screen and (max-width: 1000px) {
+        #passwordDiv .pswdLimits{
+          position: static;
+          font-size: 12px; 
+          width: 100%;   
+        }
+
+        .mat-form-field-infix {
+          text-align: center;
+        }
+
+        .addFundsBtn {
+          width: 80%;
+        }
+
+        
+        @media only screen and (max-width: 767px) {
+          input[type=text], textarea,  input[type=tel],input[type=password],input[type=date],select.form-control {
+            text-align: center;
+          }
+        .extraPadding {
+          padding-left: 44%;
+        }
+
+        .addFundsInputPadding {
+          padding-left: 28%;
+        }
+      
+        .center-text_Mobile {
+          text-align: center;
+}
+
+      }
+     }
+
+    @media only screen and (max-width: 500px) {
+      .addFundsInputPadding {
+        padding-left: 20%;
+      }
+    }
+
+    @media only screen and (max-width: 380px) {
+      .addFundsInputPadding {
+        padding-left: 10%;
+      }
+    }
+    @media only screen and (max-width: 350px) {
+      .addFundsInputPadding {
+        padding-left: 4%;
+      }
+    }
+   
+    .modal{
+      width: 88%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) !important;
+    }
+
+  

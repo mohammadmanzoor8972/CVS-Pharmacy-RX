@@ -1,0 +1,13 @@
+
+  .modal {
+    display:    block;
+    position:   fixed;
+    z-index:    1000;
+   
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('~/assets/Spinner-1s-200px.gif') 
+                50% 50% 
+                no-repeat;
+}

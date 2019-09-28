@@ -1,0 +1,23 @@
+<div class="container" id="toppaddingPage">
+  <div class="row justify-content-center">
+      <div class="media-container-column col-lg-6" data-form-type="formoid">
+          <h1 class="text-center vertical-spacing-bottom-8">{{view?.mainHeader}}</h1>
+       
+             <div class="row row-offset vertical-spacing-bottom-8">
+                  <div class="col-lg-6 vertical-spacing-2 text-center" data-for="name">
+                    <button type="submit" class="btn btn-primary btn-form display-4 col-lg-9"  value="Submit" (click)="updateClick()">{{view?.buttonLeftText}}</button>
+                  </div>
+             
+             
+                <div class="col-lg-6 vertical-spacing-2 text-center" data-for="name">
+                  <button type="submit" class="btn btn-primary btn-form display-4 col-lg-9"  value="Opt-out"  (click)="optOutClick()">{{view?.buttonRightText}}</button>
+                </div>
+             </div>
+              
+             <div class="row row-offset text-center">
+               <span>{{view?.disclaimer}}</span>
+               </div>
+        
+      </div>
+  </div>
+</div>

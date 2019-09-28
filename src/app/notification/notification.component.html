@@ -1,0 +1,23 @@
+
+<ng-container *ngIf="showMessage">
+  <div *ngFor="let notification of notifications" class="notifications">
+
+    <div class="alert {{ notificationCss(notification) }} alert-dismissible anim-fade in" role="alert">
+      <span class="alert-icon {{notificationImageCss(notification)}}"></span>
+      <span [innerHTML]="notification.message"></span>
+      <button type="button" class="alert-close btn-icon dls-glyph-close" aria-label="Close" data-toggle="dismissible"
+              data-dismiss="alert"
+              (click)="removeNotification(notification)"></button>
+    </div>
+
+  </div>
+
+</ng-container>
+
+<div *ngIf="timeoutMessage.length > 0" class="alert alert-warn alert-dismissible anim-fade in" role="alert">
+  <span class="alert-icon dls-icon-warning-filled"></span>
+  <span [innerHTML]="timeoutMessage"></span>
+  <button type="button" class="alert-close btn-icon dls-glyph-close" aria-label="Close" data-toggle="dismissible"
+          data-dismiss="alert"
+          (click)="removeNotification(notification)"></button>
+</div>

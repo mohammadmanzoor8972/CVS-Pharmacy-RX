@@ -1,0 +1,94 @@
+
+<app-notify *ngIf="!showMessage"></app-notify>
+<div class="container" id="toppaddingPage">
+  <div class="row justify-content-center">
+    <div class="media-container-column col-lg-9" data-form-type="formoid">
+      <h1 class="text-center vertical-spacing-bottom-8">{{view?.autoOptOutHeader}}</h1>
+      <form *ngIf="!showMessage" [formGroup]="autoReloadOptOutForm" name="autoReloadOptOutForm" (submit)='submit()'>
+        <div class="row row-sm-offset">
+                <div class="col-md-3"></div>
+                <div class="col-md-6" data-for="cardNumber">
+                  <div class="form-group">
+                    <input type="tel" name="cardNumber" class="form-control mobileTextCenter" id="cardNumber" placeholder="{{view?.cardNumberLabel}}" minlength="19"
+                      maxlength="19" formControlName='cardNumber' required (input)="allowNumbers(autoReloadOptOutForm.get('cardNumber'))">
+                    <div *ngIf="autoReloadOptOutForm.get('cardNumber').invalid && autoReloadOptOutForm.get('cardNumber').touched"
+                      class="alert alert-danger">
+                      <div *ngIf="autoReloadOptOutForm.get('cardNumber').hasError('required') && autoReloadOptOutForm.get('cardNumber').touched">
+                        {{view?.cardNumberAuthField[0]?.fields.authField}}
+                      </div>
+                      <div *ngIf="autoReloadOptOutForm.get('cardNumber').hasError('minlength') && autoReloadOptOutForm.get('cardNumber').touched">
+                        {{view?.cardNumberAuthField[1]?.fields.authField}}
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="row row-sm-offset">
+              <div class="col-md-3"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="amountToReload" required="" formControlName="amountToReload" data-form-field="amountToReload"
+                    placeholder="{{view?.amtReloadLabel}}" [textMask]="{mask: dollarMask,guide: false}" (input)="allowNumbers(autoReloadOptOutForm.get('amountToReload'))">
+                  <div *ngIf="autoReloadOptOutForm.get('amountToReload').invalid && autoReloadOptOutForm.get('amountToReload').touched"
+                    class="alert alert-danger">
+                    <div *ngIf="autoReloadOptOutForm.get('amountToReload').hasError('required') && autoReloadOptOutForm.get('amountToReload').touched">
+                      {{view?.monthlyReloadAuthField[0]?.fields.authField}}
+                    </div>
+                    <div *ngIf="autoReloadOptOutForm.get('amountToReload').hasError('min') && autoReloadOptOutForm.get('amountToReload').touched">
+                      {{view?.monthlyReloadAuthField[1]?.fields.authField}}
+                    </div>
+                    <div *ngIf="autoReloadOptOutForm.get('amountToReload').hasError('max') && autoReloadOptOutForm.get('amountToReload').touched">
+                      {{view?.monthlyReloadAuthField[2]?.fields.authField}}
+                    </div>
+                  </div>
+                </div>
+                <p>{{view?.amtReloadInfo}}</p>
+              </div>
+            </div>
+            <div class="row row-sm-offset">
+              <div class="col-md-6">
+                <div class="form-group select-arrow">
+                  <select class="selectpicker form-control addFundsInputPadding" [required]="autoReloadRequired()" name="dateForReload" formControlName="dateForReload">
+                    <option value="" selected>{{view?.monthDropDownLabel}}</option>
+                    <option *ngFor="let day of view?.dayValue" [value]="day.fields.entryTitle">{{day.fields.placeHolderText}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6" data-for="name">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="balanceThreshold" [required]="autoReloadRequired()"  formControlName="balanceThreshold" data-form-field="balanceThreshold"
+                    placeholder="{{view?.balanceThresholdLabel}}" [textMask]="{mask: dollarMask,guide: false}" (input)="allowNumbers(autoReloadOptOutForm.get('balanceThreshold'))">
+                  <div *ngIf="autoReloadOptOutForm.get('balanceThreshold').invalid && autoReloadOptOutForm.get('balanceThreshold').touched"
+                    class="alert alert-danger">
+                    <div *ngIf="autoReloadOptOutForm.get('balanceThreshold').hasError('required') && autoReloadOptOutForm.get('balanceThreshold').touched">
+                      {{view?.balanceThresholdAuthField[0]?.fields.authField}}
+                    </div>
+                    <div *ngIf="autoReloadOptOutForm.get('balanceThreshold').hasError('min') && autoReloadOptOutForm.get('balanceThreshold').touched">
+                       {{view?.balanceThresholdAuthField[1]?.fields.authField}}
+                    </div>
+                    <div *ngIf="autoReloadOptOutForm.get('balanceThreshold').hasError('max') && autoReloadOptOutForm.get('balanceThreshold').touched">
+                       {{view?.balanceThresholdAuthField[2]?.fields.authField}}
+                    </div>
+                  </div>
+                </div>
+                <p>Must be entered in whole dollars. This is the minimum balance that you want to <br>
+                  maintain on your card.If the balance on your card drops below this amount, funds <br> will be automatically added to your card.</p>
+              </div>
+            </div>
+            <span class="row input-group-btn vertical-spacing-7">
+              <button href="" type="submit" [disabled]="isValid()" class="btn btn-primary btn-form col-md-4 addFundsBtn">{{view?.buttonLabel}}</button>
+             <button href="" type="reset" (click)="cancel()" class="btn btn-primary btn-form col-md-4 vertical-spacing-3 horizontal-spacing-3 addFundsBtn">{{view?.secondBtnLabel}}</button>
+            </span>
+  </form>
+<app-notify></app-notify>
+</div>
+</div>
+</div>
+
+<ng-template #template>
+  <div class="modal-body text-center">
+    <div class="modal-title">Do you want to confirm?</div>
+    <button type="button" class="btn btn-default modal-btn" (click)="confirm()" >Yes</button>
+    <button type="button" class="btn btn-primary modal-btn" (click)="decline()" >No</button>
+  </div>
+</ng-template>

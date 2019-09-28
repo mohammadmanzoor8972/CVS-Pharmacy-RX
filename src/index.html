@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CVS</title>
+  <base href="/">
+  <link  href="favicon.ico" rel="icon" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+   <link rel="icon" type="image/x-icon" href="favicon.ico">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+  <script src="https://includestest.ccdc02.com/cardinalcruise/v1/songbird.js"></script>
+</head>
+<body>
+  <app-root></app-root>
+
+  <script>
+    //Google Analytics
+    
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ 
+    ga('create', 'UA-118572842-1', 'auto');  // <- add the UA-ID from your tracking code
+                                           // <- remove the last line like me
+  
+
+    //create the script this way because it has to go in the <head> 
+    (function () { 
+    var c = document.createElement('script'); 
+    c.type = 'text/javascript'; 
+    c.src = 'https://staging.cdn-net.com/cc.js?sid=80cbd8493227c6a3&amp;ts=6:00:37 PM'; 
+    c.async = true; 
+    c.onload = handleLoad; 
+    c.onreadystatechange = handleReadyStateChange; 
+    c.onerror = handleError; 
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(c, s); 
+    })();
+    
+    var _cc = window._cc || []; 
+    var _inauthLoaded = false; 
+    
+    function handleLoad() { 
+    if (!_inauthLoaded) { 
+    _inauthLoaded = true; 
+    } 
+    } 
+    
+    function handleReadyStateChange() { 
+    var state; 
+    
+    if (!_inauthLoaded) { 
+    state = scr.readyState; 
+    if (state === "complete") { 
+    //console.log("InAuth readystate complete"); 
+    } 
+    } 
+    } 
+    
+    function handleError() { 
+    if (!_inauthLoaded) { 
+    _inauthLoaded = true; 
+    console.warn("SecurePay: InAuth loading error"); 
+    } 
+    } 
+    
+    </script>
+
+</body>
+</html>

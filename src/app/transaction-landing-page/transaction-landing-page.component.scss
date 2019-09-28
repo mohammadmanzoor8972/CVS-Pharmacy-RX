@@ -1,0 +1,85 @@
+.availableBalance{ul{li{
+    list-style-type: none;
+    a{text-decoration: underline;}
+}}}
+.availableBalanceBlock{
+background-color:#fff;
+width:171px;
+height:76px;
+text-align: center;
+}
+.availableBalanceBlock h6{
+font-size: 12px!important;
+padding: 5px;
+color:  #182d57;
+}
+.availableBalanceBlock h2{
+font-size: 36.92px!important;
+color:  #182d57;
+}
+
+.availableBalance{
+  
+color:  #182d57;
+font-size: 12.31px;/* Approximation due to font substitution */
+
+text-decoration: underline;
+text-align: right;
+transform: scaleY(1.0003);
+}
+
+.advertiseBlock{img{height:414px;width:250px;}}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #9fdbe7;
+    border: 4px solid #fff;
+}
+.table{border: 10px solid #fff;}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: #cef0f4;
+    border: 4px solid #fff;
+}
+.table td, .table th{border-top:transparent;padding: 2px;padding-left: 10px;font-size:10.77px;}
+.table thead th{border-bottom:transparent;color:  #182d57;}
+.card-body{padding:0px;}
+
+.scrollbarDiv {
+    position: relative;
+    overflow-y: scroll;
+    height: 275px;
+}
+
+.height155px {
+    height:155px !important;
+}
+
+.heightAuto{
+    // max-height: 400px;
+    height: auto !important;
+}
+
+.fontRed {
+    color: red !important;
+}
+
+.transaction-btn{
+    height: auto !important;
+    padding: 10px;
+}
+.transaction-sub-title{
+    color:  #182d57;
+    font-size: 18.46px;
+     font-weight: bold;
+     margin: 1rem 0rem;
+ }
+
+.font9px {
+    color:  #182d57;
+    font-size: 9px;
+ }
+
+@media (max-width: 767px) {
+    ul > li:first-of-type {
+        margin-top: 20px;
+    }
+ }

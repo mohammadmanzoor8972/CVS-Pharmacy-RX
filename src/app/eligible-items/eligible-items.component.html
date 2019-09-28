@@ -1,0 +1,20 @@
+<div class="container" id="toppaddingPage" *ngIf="view">
+    <div class="row justify-content-center">
+        <div id="mediaDivId" class="media-container-column col-lg-9" data-form-type="formoid">
+            <h1 class="text-center vertical-spacing-bottom-8" [innerHtml]="view?.header"></h1>
+            <div class="contentDiv col-md-12 mb-4">
+                <h5 [innerHtml]="view?.subHeader"></h5>
+                <div class="cardDiv card-body">
+                    <div class="row">
+                        <ul *ngFor="let list of view?.eligibleList" class="col-6">
+                            <li>{{list.fields.placeHolderText}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="btnDiv">
+                 <a class="btn faqBtn" href="/{{view?.helpLink}}">{{view?.buttonText}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

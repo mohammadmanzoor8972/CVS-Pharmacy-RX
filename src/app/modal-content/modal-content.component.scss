@@ -1,0 +1,53 @@
+.custom-modal{
+    background: rgba(204, 32, 37, 0.9);
+    color: white;
+    padding-bottom: 2rem;
+  }
+  .custom-modal-title {
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  .custom-modal-message {
+    font-size: 0.8rem;
+    margin: 0px auto;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    font-weight: bold;
+    text-align: right;
+  }
+  .custom-modal-button-block {
+    float: right;
+    padding-right: 60px;
+  }
+  
+  .custom-modal-button {
+    padding: 2px 15px;
+    background-color: #FFF;
+    color: #000;
+    border-radius: 0;
+    border: 1px solid #333;
+  }
+  .custom-modal-text {
+    width: 60%;
+    display: inline-block;
+    padding-right: 20px;
+    padding-top: 5px;
+  }
+
+  @media (max-width: 991px) {
+    .custom-modal-message {
+      text-align: center;
+    }
+
+    .custom-modal-button-block {
+    float: unset;
+    padding-right: 0;
+  }
+
+    .custom-modal-text {
+      width: 90%;
+      padding: 0 15px 15px 15px;
+    }
+  }

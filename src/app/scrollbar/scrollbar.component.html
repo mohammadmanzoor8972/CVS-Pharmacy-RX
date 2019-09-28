@@ -1,0 +1,11 @@
+<div *ngIf="view" class="card scrollbarDiv square scrollbar-cyan bordered-cyan">
+    <div *ngFor="let link of view" class="card-body">
+        <div class="section-Div">
+         <h5 class="headerText" [innerHTML]="link?.fields?.header"></h5>
+         <div *ngIf="elementActive && link.fields.header">
+            <hr>
+        </div>
+         <p class="paragraphText" [innerHTML]="link?.fields?.description"></p>
+        </div>
+    </div>
+</div>

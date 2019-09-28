@@ -1,0 +1,84 @@
+# The YML File IS Responsible for Deploying the Latest Web Site
+#Code into Firebase.
+box: node:7.10
+# This is the build pipeline. Pipelines are the core of wercker
+# Read more about pipelines on our dev center
+# http://devcenter.wercker.com/docs/pipelines/index.html
+
+# You can also use services such as databases. Read more on our dev center:
+# http://devcenter.wercker.com/docs/services/index.html
+# services:
+    # - postgres
+    # http://devcenter.wercker.com/docs/services/postgresql.html
+
+    # - mongo
+    # http://devcenter.wercker.com/docs/services/mongodb.html
+start:
+  steps:
+    # The steps that will be executed on build
+    # Steps make up the actions in your pipeline
+    # Read more about steps on our dev center:
+    # http://devcenter.wercker.com/docs/steps/index.html
+    - script:
+          name: echo nodejs information
+          code: |
+            env
+            echo "node version $(node -v) running"
+            echo "npm version $(npm -v) running"
+      # A st  ep that executes `npm install` command
+
+BUILD:
+  steps:
+    - npm-install
+
+      # A step that executes `npm test` command
+      # npm-test
+
+      # A custom script step, name value is used in the UI
+      # and the code value contains the command that get executed
+    - script:
+        name: Installing Angular CLI
+        code: |
+          env
+          npm install -g @angular/cli
+          echo "$(ng --version)"
+    - script:
+        name: Angular Production Build
+        code: |
+          ng build --prod --environment=$WERCKER_GIT_BRANCH
+  after-steps:
+    - slack-notifier:
+        url: $SLACK_WEBHOOK_URL
+        username: Build-Notification
+
+Deploy-Dev:
+  steps:
+    - script:
+        name: firebase-install
+        code: |
+          npm install -g firebase-tools
+    - script:
+      name: firebase-deploy-step
+      code: |
+          firebase deploy --project $FIREBASE_PROJECT_NAME --token $FIREBASE_TOKEN --debug
+  after-steps:
+    - slack-notifier:
+        url: $SLACK_WEBHOOK_URL
+        username: Build-Notification
+
+Deploy-QA:
+  steps:
+    - script:
+        name: firebase-install
+        code: |
+          npm install -g firebase-tools
+    - script:
+      name: firebase-deploy-step
+      code: |
+          firebase deploy --project $FIREBASE_PROJECT_NAME --token $FIREBASE_TOKEN --debug
+  after-steps:
+    - slack-notifier:
+        url: $SLACK_WEBHOOK_URL
+        username: Build-Notification
+Deploy-Production:
+  steps:

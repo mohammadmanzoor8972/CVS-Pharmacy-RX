@@ -1,0 +1,15 @@
+<div class="container" id="toppaddingPage" *ngIf="privacyInfo">
+  <div class="row justify-content-center">
+      <div class="media-container-column col-lg-9" data-form-type="formoid">
+          
+          <h1 class="text-center">{{privacyInfo?.mainHeader}}</h1>
+            <div class="col-md-12 mb-4">
+               
+                    <div *ngFor="let link of privacyInfo?.textLink" class="sectionContent">
+                        <h4  [innerHTML]="link?.fields?.header"></h4>
+                        <p class="descriptField" [innerHTML]="link?.fields?.description"></p>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

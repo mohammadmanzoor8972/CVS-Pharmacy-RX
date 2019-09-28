@@ -1,0 +1,51 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="max-width-980 vertical-padding-4">
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="imgDiv vertical-spacing-xs-bottom-5 vertical-spacing-sm-bottom-9">
+            <img src="{{view?.fields.leftSidePicture.fields.file.url}}" class="img-fluid imageRxReload-card" />
+          </div>
+        </div>
+        <div id="mainTextDiv" class="starwars col-lg-7 collapse-padding-md vertical-spacing-sm-top-4">
+          <div id="textDiv" class="col-md-12">
+            <div class="row vertical-spacing-bottom-4">
+
+              <div class="languageDiv col-md-6 font-color-colorgreen collapse-padding fontHN vertical-spacing-xs-6 horizontal-spacing-xs-left-9 pull-xs-right">
+                <div class="englishBtnDiv" [ngClass]="{'englishBtnActive': englishBtnActive}" (click)="selectLang('en')">{{view?.fields.buttons.fields.button1}}</div>
+                &nbsp;/&nbsp;
+                <div class="spanishBtnDiv" [ngClass]="{'spanishBtnActive': spanishBtnActive}" (click)="selectLang('es')">{{view?.fields.buttons.fields.button2}}</div>
+
+              </div>
+              <div class="col-md-6">
+              </div>
+            </div>
+          </div>
+          <div *ngFor="let link of view?.fields.rightSideInfo" class="col-xs-12 collapse-padding-md">
+            <h2 class="mainH2 font-color-colorwhite font43px40pxlh fontHN horizontal-spacing-xs-left-3">{{link.fields.header}}</h2>
+            <div class="mainP-Div">
+              <p class="p1 font-color-colorwhite font24px fontHN d-none d-sm-none d-xl-block d-lg-block">
+                {{link.fields.shortDescription}}
+              </p>
+              <p *ngIf="englishBtnActive" class="p2">{{view?.fields.rightSideInfoP2}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div id="checkBalanceBtnDiv" class="col-md-4 vertical-spacing-xs-3 horizontal-spacing-xs-3">
+              <button class="btn btn-primary blue btn-block btn-md checkbalance font21px40pxlh" [ngClass]="{'setBtn-SpanishText': spanishBtnActive}"
+                id="brandLoginForm_button" type="submit" (click)="checkBalanceInquiry()">
+                {{view?.fields.buttons.fields.button3}}
+              </button>
+            </div>
+            <div id="reportCardDiv" class="col-md-4 vertical-spacing-xs-3 horizontal-spacing-xs-3">
+              <button class="btn btn-primary blue btn-block btn-md checkbalance font21px40pxlh" [ngClass]="{'setBtn-EnglishText': englishBtnActive}"
+                id="brandLoginForm_button" type="submit" (click)="reportLostCard()">
+                {{view?.fields.buttons.fields.button4}}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

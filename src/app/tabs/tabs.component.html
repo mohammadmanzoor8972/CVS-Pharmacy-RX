@@ -1,0 +1,12 @@
+<ul class="nav nav-tabs UsingYourCard visible-md visible-sm  visible-xs visible-lg vertical-spacing-bottom-8" role="tablist">
+  <li role="presentation" class="active visible-md visible-sm  visible-xs visible-lg col-xs-4 col-sm-4 col-md-3 collapse-padding"
+      *ngFor="let tab of tabs" (click)="selectTab(tab)" [class.active]="tab.active">
+
+    <a aria-controls="features" role="tab" data-toggle="tab"
+       class="fontBS font16px24pxlh font-bold" [innerHTML]="tab.label">
+    </a>
+  </li>
+
+</ul>
+
+<ng-content></ng-content>

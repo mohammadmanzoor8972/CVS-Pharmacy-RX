@@ -1,0 +1,154 @@
+<app-notify></app-notify>
+<div class="container" id="toppaddingPage">
+    <div class="row justify-content-center">
+        <div class="media-container-column col-lg-8" data-form-type="formoid">
+            <h1 class="text-center">{{view?.topLabel}}</h1>
+            <form [formGroup]='personalInfoForm' (submit)='onFormSubmit(personalInfoForm)'>
+                <div class="row row-sm-offset">
+                    <div class="col-md-6" data-for="firstName">
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" name="name" data-form-field="firstName" placeholder="{{view?.firstNameLabel}}"
+                            formControlName="firstName" (input)="allowCharacters(personalInfoForm.get('firstName'))" required>
+
+                            <div *ngIf="personalInfoForm.get('firstName').touched && personalInfoForm.get('firstName').invalid" class="alert alert-danger">
+                                <span class="error font-color-red" *ngIf="personalInfoForm.get('firstName').hasError('required') && personalInfoForm.get('firstName').touched">
+                                    {{view?.firstNameAuthField[0]?.fields.authField}}
+                                </span>
+                                <span class="error font-color-red" *ngIf="personalInfoForm.get('firstName').hasError('minlength') && personalInfoForm.get('firstName').touched">
+                                    {{view?.firstNameAuthField[1]?.fields.authField}}
+                                </span>
+                                <span class="error font-color-red" *ngIf="personalInfoForm.get('firstName').hasError('maxlength') && personalInfoForm.get('firstName').touched">
+                                    {{view?.firstNameAuthField[2]?.fields.authField}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" data-for="lastName">
+                        <div class="form-group">
+
+                <input type="text" class="form-control" name="lastName" data-form-field="lastName" placeholder="{{view?.lastNameLabel}}"
+                            formControlName="lastName" (input)="allowCharacters(personalInfoForm.get('lastName'))">
+
+                            <div *ngIf="personalInfoForm.get('lastName').touched && personalInfoForm.get('lastName').invalid" class="alert alert-danger">
+                                <span class="error font-color-red" *ngIf="personalInfoForm.get('lastName').hasError('required') && personalInfoForm.get('lastName').touched">
+                                    {{view?.lastNameAuthField[0].fields.authField}}
+                                </span>
+                                <span class="error font-color-red" *ngIf="personalInfoForm.get('lastName').hasError('minlength') && personalInfoForm.get('lastName').touched">
+                                    {{view?.lastNameAuthField[1].fields.authField}}
+                                </span>
+                                <span class="error font-color-red" *ngIf="personalInfoForm.get('lastName').hasError('maxlength') && personalInfoForm.get('lastName').touched">
+                                    {{view?.lastNameAuthField[2].fields.authField}}
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-sm-offset">
+                    <div class="col-md-6" data-for="email">
+                        <div class="form-group">
+                            <input type="text" class="form-control" autocorrect="off" name="email" data-form-field="Email" formControlName="email" placeholder="{{view?.emailLabel}}">
+                            <div *ngIf="personalInfoForm.get('email').touched && personalInfoForm.get('email').invalid" class="alert alert-danger">
+                                <span class="error font-color-red" *ngIf="personalInfoForm.get('email').hasError('required') && personalInfoForm.get('email').touched">
+                                    Email is required
+                                </span>
+                                <span class="error font-color-red" *ngIf="personalInfoForm.get('email').getError('patternInvalid')?.text && personalInfoForm.get('email').invalid">
+                                    {{personalInfoForm.get('email').getError('patternInvalid')?.text}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" data-for="phone">
+                        <div class="form-group">
+                          <input tabindex="0" type="tel" class="form-control" name="phone" data-form-field="Phone" formControlName="phone" placeholder="{{view?.phoneLabel}}"
+                            minlength="16" maxlength="16" required (input)="updatePhone(personalInfoForm.get('phone'))">
+                          <div *ngIf="personalInfoForm.get('phone').touched && personalInfoForm.get('phone').invalid" class="alert alert-danger">
+                            <span class="error font-color-red" *ngIf="personalInfoForm.get('phone').hasError('required') && personalInfoForm.get('phone').touched">
+                              Phone is required
+                            </span>
+                            <span class="error font-color-red" *ngIf="personalInfoForm.get('phone').hasError('minlength') && personalInfoForm.get('phone').touched">
+                              Incorrect Phone number
+                            </span>
+                            <span class="error font-color-red" *ngIf="personalInfoForm.get('phone').hasError('maxlength') && personalInfoForm.get('phone').touched">
+                                Incorrect Phone number
+                              </span>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-sm-offset" id="passwordDiv">
+                    <div class="col-md-6" data-for="username">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="username" data-form-field="Username" placeholder="{{view?.userNameLabel}}" formControlName="username">
+                            <div *ngIf="personalInfoForm.get('username').touched && personalInfoForm.get('username').invalid" class="alert alert-danger">
+                                <span class="error font-color-red" *ngIf="personalInfoForm.get('username').hasError('required') && personalInfoForm.get('username').touched">
+                                    {{view?.userNameAuthField[0].fields.authField}}
+                                </span>
+                                <span class="error font-color-red" *ngIf="personalInfoForm.get('username').hasError('pattern') && personalInfoForm.get('username').touched"> Specail characters not allowed.</span> 
+                                <span class="error font-color-red" *ngIf="personalInfoForm.get('username').hasError('minlength') && personalInfoForm.get('username').touched">
+                                    Minimum of 6 characters.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" data-for="password">
+                        <div class="form-group">
+                            <input type="password" class="form-control media-tooltip" required validateEqual="confirmPassword" reverse="true" name="password"
+                            data-form-field="Password" formControlName="password" placeholder="{{view?.passwordLabel}}" pattern="^(?=.*[A-Za-z])(?=.*[A-Z][a-z])(?=.*\d)[A-Za-z\d]{8,}$"
+                            (focus)="inputFocused()" (blur)="looseFocus()"
+                            />
+                            <div *ngIf="personalInfoForm.get('password').touched && personalInfoForm.get('password').invalid" class="alert alert-danger">
+                                <span class="error font-color-red" *ngIf="personalInfoForm.get('password').hasError('required') && personalInfoForm.get('password').touched">
+                                    {{view?.passAuthField[0].fields.authField}}
+                                </span>
+                                <span class="error font-color-red" *ngIf="personalInfoForm.get('password').touched && personalInfoForm.get('password').invalid && !personalInfoForm.get('password').hasError('required')">
+                                     {{view?.passAuthField[1].fields.authField}}
+                                </span>
+                            </div>
+                        </div>
+                        <div id="passwordSideText" class="pswdLimits" *ngIf="password_limits">
+                            <ul class="sideText" *ngFor="let sideText of view?.passwordSideText">
+                                <li>{{sideText.fields?.placeHolderText}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-sm-offset">
+                    <div class="col-md-6" data-for="confirmPassword">
+                        <div class="form-group">
+                            <input type="password" class="form-control" required validateEqual="password" name="confirmPassword" data-form-field="Confirm Password"
+                            formControlName="confirmPassword" placeholder="{{view?.confirmPasswordLabel}}" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+                            <div *ngIf="personalInfoForm.get('confirmPassword').touched && personalInfoForm.get('confirmPassword').invalid" class="alert alert-danger">
+                                <!-- <span class="error font-color-red" *ngIf="personalInfoForm.get('confirmPassword').hasError('required') && personalInfoForm.get('confirmPassword').touched">
+                                    Password is required
+                                  </span> -->
+                                <span class="error" *ngIf="personalInfoForm.get('confirmPassword').touched && personalInfoForm.get('confirmPassword').invalid">
+                                    {{view?.passConfirmAuth[1].fields.authField}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" data-for="language">
+                        <div class="form-group language-part">
+                            <select type="text" class="form-control" name="language" data-form-field="Language" required
+
+                            placeholder="test" formControlName='language'>
+                            <option value="Language" disabled>{{view?.languageLabel}}</option>
+                            <option value="E" selected>{{view?.languageTextEnglish}}</option>
+                            <option value="S">{{view?.languageTextSpanish}}</option>
+                        </select>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row input-group-btn">
+                    <div class="col-md-12">
+                        <button href="" type="submit" [disabled]='personalInfoForm.invalid' 
+                        class="btn btn-primary btn-form display-4 col-md-4">{{view?.buttonLabel}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

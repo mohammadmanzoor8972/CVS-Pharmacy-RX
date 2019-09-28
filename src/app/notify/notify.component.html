@@ -1,0 +1,14 @@
+<ng-container *ngIf="messageType">
+    <div *ngIf=showErrorMessage() class="signin_error">
+        {{message}}
+    </div>
+    <div *ngIf=showSuccessMessage() class="success">
+        {{message}}
+    </div>
+    <div *ngIf=showInvalidEmail() class="invalidEmail">
+        {{message}}
+    </div>
+    <div *ngIf=showPersonalInfo() class="personalInfo">
+        {{message}}
+    </div>
+  </ng-container>

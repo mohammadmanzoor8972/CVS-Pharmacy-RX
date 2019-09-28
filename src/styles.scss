@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'fonts.css';
+@import 'styles/button.scss';
+@import "styles/variables";
+@import 'styles/bootstrap_variables.scss';
+@import 'styles/helper.scss';
+@import 'styles/forms.scss';
+@import 'assets/mixins/mixins.scss';
+@import 'styles/fonts.scss';
+@import 'styles/global.scss';
+@import 'styles/colors.scss';
+
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+

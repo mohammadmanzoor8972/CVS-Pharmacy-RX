@@ -1,0 +1,89 @@
+<div class="container" id="toppaddingPage">
+    <div class="row justify-content-center">
+        <div class="media-container-column col-lg-9" data-form-type="formoid">
+            <h1 class="text-center vertical-spacing-bottom-7" *ngIf="profile?.firstName">{{profile?.firstName}} {{profile?.lastName}}'s Card</h1>
+            <form>
+                <div class="row row-sm-offset">
+                    <div class="col-md-2" data-for="name">
+                        <!--<div class="advertiseBlock">
+                        <img src="../assets/CVS_RxReload_adspace_placeholder.png" />
+                        </div>-->
+                    </div>
+                    <div class="col-md-8" data-for="email">
+                        <div class="justify-center row">
+                            <div  class="col-md-4 availableBalanceBlock collapse-padding horizontal-spacing-2">
+                                <h6 class="">{{view?.availableBalance}}</h6>
+                                <h2 *ngIf="availableBalance">
+                                    <b>{{availableBalance}}</b>
+                                </h2>
+                            </div>
+                            <div class="col-md-7 collapse-padding availableBalance">
+                                <ul class="removePadding" *ngFor="let links of view?.pageLinks">
+                                    <li class="text-center vertical-spacing-bottom-1">
+                                        <a routerLink="{{links.fields.linkUrl}}">
+                                            {{links.fields.linkName}}
+                                        </a>
+                                    </li>
+                                    <!-- <li class="text-right vertical-spacing-bottom-1"><a routerLink="/report-lost-card-or-damaged-card">Report Lost/damaged card</a></li> -->
+                                    <!-- <li class="text-right vertical-spacing-bottom-1"><a href="#">Cancel auto reload</a></li> -->
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                    <div class="transaction-sub-title center-text_Mobile">
+                              {{showFullHistory ? view?.tableHeader : view?.btnText }}
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card scrollbarDiv square scrollbar-cyan bordered-cyan" [ngClass]="showFullHistory ? 'height155px' : 'heightAuto'">
+                                    <div class="card-body">
+                                        <table class="table table-striped" >
+                                            <thead>
+                                                <tr>
+                                                    <th>{{view?.tableLabel[0].fields.placeHolderText}}</th>
+                                                    <th>{{view?.tableLabel[1].fields.placeHolderText}}</th>
+                                                    <th>{{view?.tableLabel[2].fields.placeHolderText}}</th>
+                                                    <th>{{view?.tableLabel[3].fields.placeHolderText}}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let transaction of transactionHistoryData" 
+                                                 [ngClass]="(transaction.transactionType=='Failed Reload' || transaction.approverCode === '999999' ) ? 'fontRed' : ''">
+                                                    <td>{{transaction.createDatetime | date:'MM/dd/yyyy' }}</td>
+                                                    <td>{{transaction.storeId}}</td>
+                                                    <div *ngIf="transaction.transactionType === 'redeem'; then redeem else otherType"></div>
+                                                    <ng-template #redeem><td>Purchase</td></ng-template> 
+                                                    <ng-template #otherType><td>{{transaction.transactionType}}</td></ng-template> 
+                                                    <ng-container [ngSwitch]="transaction.transactionType">                                                    
+                                                        <td *ngSwitchCase="'Failed Reload'">{{transaction.amountRequested | currency}} </td>
+                                                        <td *ngSwitchCase="'Online Reload'">{{transaction.amountApproved | currency}} </td>
+                                                        <td *ngSwitchDefault>{{transaction.balance | currency}} </td>
+                                                    </ng-container>
+                                                </tr>    
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center col-md-12 vertical-spacing-top-4">
+                                    <button type="submit" *ngIf="showFullHistory" (click)="showFullTransactionHistory($event)"
+                                      class="btn btn-primary transaction-btn"
+                                    value="Full Transaction History">
+                                    {{view?.btnText}}
+                                  </button>
+                            </div>
+                            <div class="col-md-12 vertical-spacing-4 font9px">
+                                <span [innerHTML]="view?.bottomDescription">
+                                
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

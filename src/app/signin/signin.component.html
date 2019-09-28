@@ -1,0 +1,76 @@
+<app-sub-header [view]="view?.subHeader"></app-sub-header>
+<app-notify></app-notify>
+<div id="signupBlock" class="container">
+  <div class="max-width-980">
+    <div class="row">
+      <div class="col-sm-4 horizontal-spacing-right-9">
+        <app-text-box [view]="view?.listItems"></app-text-box>
+      </div>
+      <div class="col-md-7 horizontal-spacing-left-7 collapse-padding-md horizontal-spacing-xs-left-3">
+        <form [formGroup]='signInForm' (ngSubmit)='onSignIn(signInForm)'>
+          <div class="form-group vertical-spacing-bottom-5">
+            <div class="h1Div">
+              <h1 id="mainH1" class="col-lg-12 collapse-padding vertical-spacing-bottom-2">{{view?.signIn.fields.topLabel}}</h1>
+            </div>
+            <div *ngIf="showLoginAttemptsError" class="alert alert-danger">
+              <div>
+                {{errorMsg}}
+              </div>
+            </div>
+            <input type="text" name="name" id="username" class="form-control" placeholder="{{view?.signIn.fields.userNameLabel}}" data-rule="minlen:4"
+              formControlName='username' data-msg="Please enter at least 4 chars">
+            <div class="validation"></div>
+            <div *ngIf="signInForm.get('username').touched && signInForm.get('username').invalid" class="alert alert-danger">
+              <div *ngIf="signInForm.get('username').hasError('required') && signInForm.get('username').touched">
+                {{view?.signIn.fields.authField[0].fields.authField}}
+              </div>
+              <div *ngIf="signInForm.get('username').hasError('minlength') && signInForm.get('username').touched">
+                {{view?.signIn.fields.authField[1].fields.authField}}
+              </div>
+              <div *ngIf="signInForm.get('username').hasError('pattern') && signInForm.get('username').touched">
+                {{view?.signIn.fields.authField[3].fields.authField}}
+              </div>
+            </div>
+          </div>
+          <div class="form-group vertical-spacing-bottom-4">
+            <input type="password" name="name"
+             class="form-control" id="password" placeholder="{{view?.signIn.fields.passwordLabel}}"
+             pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+             formControlName="password" #passwordInput>
+            <div class="validation"></div>
+
+             <div *ngIf="signInForm.get('password').touched && signInForm.get('password').invalid" class="alert alert-danger">
+              
+              <div *ngIf="signInForm.get('password').hasError('required') && signInForm.get('password').touched">
+                {{view?.signIn.fields.authField[2].fields.authField}}
+              </div>
+              
+              <div *ngIf="signInForm.get('password').hasError('pattern') && signInForm.get('password').touched">
+                  {{view?.signIn.fields.authField[5].fields.authField}}
+              </div> 
+              
+            </div>
+          </div>
+          <div class="form-group">   
+           <re-captcha    
+          #captchaControl
+          formControlName="recaptcha" 
+          name="recaptcha"
+          required
+          siteKey="6LedXFkUAAAAAK4Pbz43clBXsBBy3WZtwe-MFBpZ"     
+        ></re-captcha>
+          </div>
+          <div id="submitBtnDiv" class="row horizontal-padding-xs-4 horizontal-padding-sm-4 horizontal-padding-3">
+            <button id="signInBtn" type="submit" [disabled]='signInForm.invalid' class="btn btn-primary blue btn-block btn-md col-lg-4 signUp col-sm-12 collapse-padding-sm"
+              value="Sign In">{{view?.signIn.fields.signInButtonText}}</button>
+            <span class="col-lg-5 vertical-spacing-top-2 col-sm-12 collapse-padding-right text-center">
+              <a [routerLink]="['/forgot-password']" class="bottomATag col-lg-12">{{view?.signIn.fields.forgotPasswordLink}}</a>
+              <br/>
+              <a [routerLink]="['/forgot-username']" class="bottomATag col-lg-12">{{view?.signIn.fields.forgotUsernameLink}}</a>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

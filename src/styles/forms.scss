@@ -1,0 +1,63 @@
+//
+// Forms
+// --------------------------------------------------
+@import 'colors.scss';
+
+   
+//inputs
+input[type="text"], input[type="email"], input[type="tel"], input[type="number"],input[type="password"] {
+  padding: 8px;
+  height: 43px;
+  margin-bottom: 0px;
+  outline: none;
+  color: $colorGrey70;
+}   
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="number"],input[type="password"],textarea, select {
+  //font-family: 'ProximaNovaAltRegular';
+  font-size: 23px;
+  font-weight: 300;
+  line-height: 20px;
+  color: $colorGrey70;
+  
+  background-color: $colorGrey606;
+  background-repeat: no-repeat;
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+  border-radius: 0px;
+  border: 1px solid  rgba(162, 161, 161, 40);
+  &:focus {
+    box-shadow: 0 0 4px $colorGrey10;
+    border: 1px solid $colorGrey10;
+  }
+  &.error {
+    border: 1px solid $colorRed;
+    background: $colorGrey10 url(icon-notification-field-error.png) no-repeat 95% 13px;
+  }
+  &.validated {background: $colorGrey10 url(icon-field-success.png) no-repeat 95% 13px;}
+}
+
+select {  
+		background-color: $colorWhite;border-top: solid 1px $colorGrey20;
+		border-left: solid 1px $colorGrey20;
+		border-bottom: solid 1px $colorGrey20;
+		border-right: solid 1px $colorGrey20; border-radius:0px;
+      }
+select.validated {background: $colorGrey10 url(/static/images/icons/icon-field-success.png) no-repeat 82% 13px;}
+select.error {
+  background: #f6f6f6 url(/static/images/icons/icon-notification-field-error.png) no-repeat 85% 10px;
+ }
+
+ select.error.styled {
+  background: #f6f6f6 url(/static/images/icons/icon-notification-field-error.png) no-repeat 95% 13px;
+ }
+ 
+ 
+ 
+
+
+input#eSignAgmtFlag {position: relative;top: 27px;width: 20px;height: 20px;}

@@ -1,0 +1,16 @@
+<div class="container" id="toppaddingPage" *ngIf="faqView">
+  <div class="row justify-content-center">
+    <div class="media-container-column col-lg-9" data-form-type="formoid">
+    <h1 class="text-center" [innerHTML]="faqView?.mainHeader"></h1>
+      <div class="col-md-12 mb-4">         
+            <div class="sectionContent" *ngFor="let link of faqView?.faqItems">
+              <h4 *ngIf="link?.fields?.header" [innerHTML]="link?.fields?.header"></h4>
+              <div *ngIf="elementActive && link.fields.header">
+                <hr>
+              </div>
+              <p *ngIf="link?.fields?.description" class="descriptField" [innerHTML]="link?.fields?.description"></p>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>

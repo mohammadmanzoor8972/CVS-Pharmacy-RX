@@ -1,0 +1,243 @@
+.navbar {
+  font-family:'HelveticaNeue';
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: rgba(204,32,37,0.9);
+  border: 0;.navbar {
+  font-family:'HelveticaNeue';
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: rgba(204,32,37,0.9);
+  border: 0;
+  font-size: 11px !important;
+  letter-spacing: 4px;
+  border-radius:0px;
+  z-index: 9999;
+  
+}
+
+  .navbar-default .navbar-toggle {
+    border-color: transparent;
+  }
+
+  .navbar-dark .navbar-toggler-icon {
+    display: none;
+  }
+
+  .navbar-toggler {
+    position: relative;
+    left: 15px;
+    border: none;
+    outline: unset;
+  }
+
+  .cvsLogo {
+    width: 245px;
+    height: 32px;
+  }
+
+  .rightLogoText {
+    letter-spacing: 1px;
+  }
+
+  .btn-default {
+    height: 2em;
+    background-color: rgba(204,32,37,0.9);
+    border-color: white;
+    color: white;
+    padding-top: 0;
+  }
+
+  #desktopLogoutBtn {
+    border: 2px solid white;
+    padding: 0px 10px 0px 10px;
+    letter-spacing: 1px;
+  }
+
+  //  ------------ Mobile Menu ------------
+  .burgerBtn-Img {
+    width: auto;
+  }
+
+ .mobileMenu-Div {
+    opacity: unset;
+    background: #fff;
+    height: auto;
+    width: 69.375%;
+    position: absolute;
+    top: 100%;
+    left: 30.6vw;
+    border-left: 4px solid #122a52;
+  }
+
+  .burgerBtn-Div {
+    padding-top: 15px;
+    margin-left: -10px;
+
+    &:nth-child(4) {
+      margin-bottom: 20px;
+
+      hr {
+        display: none;
+      }
+    }
+  }
+
+.section-Div {
+  position: relative;
+  left: 12px;
+
+    h6 {
+        color: #122a52;
+        letter-spacing: 1px;
+    }
+
+    hr {
+        border-top: 2px solid rgba(0,0,0,.1);
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    ul {
+        position: relative;
+        right: 25px;
+        list-style: none;
+        margin-bottom: unset;
+
+        li {
+            line-height: 25px;
+            letter-spacing: 0;
+            width: 45.5vw;
+        }
+
+        a {
+            color: #95979a;
+            font-size: 1.2em;
+
+            &:hover {
+                text-decoration: unset;
+                color: #95979a;
+            }
+        }
+    }
+}
+
+  .loggedOutState {
+    
+    // This represents the mobile menu headers in a logged out state
+    &:nth-child(1) {
+      h6 {
+        color: #bbbec7;
+        pointer-events: none;
+      }
+    }
+
+    // This represents the 1st and 4th section of links in the mobile menu in a logged out state
+    // These links are being set to "disabled"
+    &:nth-child(1) {
+      ul li a {
+        color: #d8d9d9;
+        pointer-events: none;
+      }
+    }
+
+    // This represents the second section of links in the mobile menu in a logged out state
+    // In this section I am selection the 2nd, 4th, & 5th link to be "disabled"
+    &:nth-child(2) {
+      ul li:nth-child(2) {
+        a {
+          color: #d8d9d9;
+          pointer-events: none;
+        }
+      }
+      ul li:nth-child(4) {
+        a {
+          color: #d8d9d9;
+          pointer-events: none;
+        }
+      }
+      ul li:nth-child(5) {
+        a {
+          color: #d8d9d9;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+
+  #mobileLogoutLoginBtn {
+    font-size: 1.1em;
+    color: rgba(204,32,37,0.9);
+    background: white;
+    border: .5px solid rgba(204,32,37,0.9);
+    margin: 1em auto 1em 2em;
+    padding: 0 10px 0 10px;
+    height: 3em !important;
+    width: auto;
+  }
+
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    // IE10+ CSS
+    .inCommLogoDiv {
+      position: absolute;
+      right: 20px;
+      bottom: 1px;
+      top: -5px;
+    }
+}
+
+  @media (max-width: 991px) {
+
+    // .cvsLogo {
+    //   width: 35vw;
+    // }
+
+    .inCommLogoDiv {
+      display: none;
+    }
+
+    .burgerBtn-Img {
+      width: 6vw;
+    }
+
+  }
+
+  @media (max-width: 767px) {
+
+    .navbar-dark .navbar-toggler-icon {
+      display: inline-flex;
+      width: 2em;
+    }
+
+    // .cvsLogo {
+    //   width: 50vw;
+    // }
+
+  }
+
+  @media (max-width: 480px) {
+
+    .section-Div {
+      hr {
+        width: 110%;
+      }
+    }
+
+    .burgerBtn-Img {
+      width: 9vw;
+    }
+
+    .cvsLogo {
+    width: 60vw;
+    height: 8vw;
+  }
+
+  }
+
+  font-size: 11px !important;
+  letter-spacing: 4px;
+  border-radius:0px;
+  z-index: 9999;
+}

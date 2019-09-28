@@ -1,0 +1,19 @@
+<div class="container" id="toppaddingPage" *ngIf="cookieView">
+    <div class="row justify-content-center">
+        <div id="" class="media-container-column col-lg-10" data-form-type="formoid">
+            <h1 class="text-center vertical-spacing-bottom-8">{{cookieView?.mainHeader}}</h1>
+            <h4 [innerHtml]="cookieView?.subHeader"></h4>
+            <div class="col-md-12 mb-4">
+                <div *ngFor="let text of cookieView?.sectionContent" class="sectionContent">
+                    <h4 class="headerText" [innerHTML]="text?.fields?.header"></h4>
+
+                    <p *ngIf="text.fields.shortDescription" class="shortDescript" [innerHtml]="text.fields.shortDescription"></p>
+                    <p *ngIf="text.fields.description" class="descriptField" [innerHtml]="text.fields.description"></p>
+                    <p *ngIf="text.fields.description2" class="listField" [innerHtml]="text.fields.description2"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

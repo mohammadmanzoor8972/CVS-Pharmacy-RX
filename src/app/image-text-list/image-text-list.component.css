@@ -1,0 +1,8 @@
+@media (max-width: 768px) {
+    
+      h2.font20px{font-size:14px;}
+     
+    }
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      .heroTitleInfo{display: inline-table;}
+      }

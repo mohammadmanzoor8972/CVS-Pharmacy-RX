@@ -1,0 +1,110 @@
+
+/* Hide the browser's default radio button */
+.mgPreference input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top:-4px;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    background-color: #fff;
+    border-radius: 50%;
+    border:2px solid #182d57;
+}
+
+/* On mouse-over, add a grey background color */
+.mgPreference:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.mgPreference input:checked ~ .checkmark {
+    background-color: #fff;
+    
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.mgPreference input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.mgPreference .checkmark:after {
+ 	top: 4px;
+	left: 4px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #182d57;
+}
+.input-group-btn {
+    display: block;
+    text-align: center;
+}
+
+.mgPreferenceBlock{margin:0 auto; margin-left: 20px; margin-bottom: 10px;}
+
+.option{
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    padding-left: 13px;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.option input{
+    display: block;
+    width: 100%;
+    color: #495057;
+    height: 30px;
+    background-color: #fff;
+    background-clip: padding-box;
+}
+
+div.option:hover {
+  background-color: #4286f4;
+  color:#fff;
+}
+
+.dropdownOptions {
+    position: absolute;
+    top:37px;
+    margin:0 !important;
+    padding: 0;
+    z-index: 99;
+}
+
+.no-border-radius{
+    border-radius:0 !important;
+}
+
+.description{  
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.btn{
+    margin-left: 2px !important;
+    margin-right: 0px !important;
+    width: 90%;
+}
+
+// .select-arrow{
+//     width:274px;
+// }

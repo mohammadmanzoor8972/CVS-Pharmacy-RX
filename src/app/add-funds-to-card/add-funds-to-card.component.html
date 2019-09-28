@@ -1,0 +1,264 @@
+<app-notify *ngIf="!showMessage"></app-notify>
+<div class="container" id="toppaddingPage">
+  <div class="row justify-content-center">
+    <div class="media-container-column col-lg-9" data-form-type="formoid">
+      <h1 class="text-center vertical-spacing-bottom-8">{{view?.topLabel}}</h1>
+      <form *ngIf="!showMessage" [formGroup]="addFundsToCardInitailizeForm" name="addFundsToCardInitailizeForm" (submit)='onFormSubmit(addFundsToCardInitailizeForm)'>
+        <div class="row row-sm-offset">
+          <div class="col-md-6" data-for="cardNumber">
+            <div class="form-group">
+              <input type="tel" name="cardNumber" class="form-control mobileTextCenter" id="cardNumber" placeholder="{{view?.cardNumberLabel}}" minlength="19"
+                maxlength="19" formControlName='cardNumber' required (input)="allowNumbers(addFundsToCardInitailizeForm.get('cardNumber'))">
+              <div *ngIf="addFundsToCardInitailizeForm.get('cardNumber').invalid && addFundsToCardInitailizeForm.get('cardNumber').touched"
+                class="alert alert-danger">
+                <div *ngIf="addFundsToCardInitailizeForm.get('cardNumber').hasError('required') && addFundsToCardInitailizeForm.get('cardNumber').touched">
+                  {{view?.cardNumberAuthField[0]?.fields.authField}}
+                </div>
+                <div *ngIf="addFundsToCardInitailizeForm.get('cardNumber').hasError('minlength') && addFundsToCardInitailizeForm.get('cardNumber').touched">
+                  {{view?.cardNumberAuthField[1]?.fields.authField}}
+                </div>
+                <div *ngIf="addFundsToCardInitailizeForm.get('cardNumber').hasError('maxlength') && addFundsToCardInitailizeForm.get('cardNumber').touched">
+                  {{view?.cardNumberAuthField[1]?.fields.authField}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-12" data-for="cvv">
+            <div class="form-group">
+              <input type="password" class="form-control" formControlName="cvv" name="cvv" data-form-field="CVV" placeholder="{{view?.cvvLabel}}"
+                minlength="3" maxlength="3" required (input)="allowNumbers(addFundsToCardInitailizeForm.get('cvv'))">
+              <div *ngIf="addFundsToCardInitailizeForm.get('cvv').invalid && addFundsToCardInitailizeForm.get('cvv').touched" class="alert alert-danger">
+                <div *ngIf="addFundsToCardInitailizeForm.get('cvv').hasError('required') && addFundsToCardInitailizeForm.get('cvv').touched">
+                  {{view?.cvvAuthField[0]?.fields.authField}}
+                </div>
+                <div *ngIf="addFundsToCardInitailizeForm.get('cvv').hasError('minlength') && addFundsToCardInitailizeForm.get('cvv').touched">
+                  {{view?.cvvAuthField[1]?.fields.authField}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row row-sm-offset">
+          <div class="col-md-6 col-sm-12" data-for="firstName">
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="firstName" name="firstName" data-form-field="firstName" placeholder="{{view?.firstNameLabel}}"
+                minlength="1" maxlength="12" required="" (input)="allowCharacters(addFundsToCardInitailizeForm.get('firstName'))">
+              <div *ngIf="addFundsToCardInitailizeForm.get('firstName').invalid && addFundsToCardInitailizeForm.get('firstName').touched"
+                class="alert alert-danger">
+                <div *ngIf="addFundsToCardInitailizeForm.get('firstName').hasError('required') && addFundsToCardInitailizeForm.get('firstName').touched">
+                  {{view?.firstNameAuthField[0]?.fields.authField}}
+                </div>
+                <div *ngIf="addFundsToCardInitailizeForm.get('firstName').hasError('minlength') && addFundsToCardInitailizeForm.get('firstName').touched">
+                  {{view?.firstNameAuthField[1]?.fields.authField}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6" data-for="lastName">
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="lastName" name="lastName" data-form-field="lastName" placeholder="{{view?.lastNameLabel}}"
+                minlength="1" maxlength="12" required="" (input)="allowCharacters(addFundsToCardInitailizeForm.get('lastName'))">
+              <div *ngIf="addFundsToCardInitailizeForm.get('lastName').invalid && addFundsToCardInitailizeForm.get('lastName').touched"
+                class="alert alert-danger">
+                <div *ngIf="addFundsToCardInitailizeForm.get('lastName').hasError('required') && addFundsToCardInitailizeForm.get('lastName').touched">
+                  {{view?.lastNameAuthField[0]?.fields.authField}}
+                </div>
+                <div *ngIf="addFundsToCardInitailizeForm.get('lastName').hasError('minlength') && addFundsToCardInitailizeForm.get('lastName').touched">
+                  {{view?.lastNameAuthField[1]?.fields.authField}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row row-sm-offset">
+          <div class="col-md-6" data-for="billingAddress">
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="billingAddress" name="billingAddress" data-form-field="billingAddress"
+                required="" placeholder="{{view?.billingAddressLabel}}" minlength="4" maxlength="35">
+              <div *ngIf="addFundsToCardInitailizeForm.get('billingAddress').invalid && addFundsToCardInitailizeForm.get('billingAddress').touched"
+                class="alert alert-danger">
+                <div *ngIf="addFundsToCardInitailizeForm.get('billingAddress').hasError('required') && addFundsToCardInitailizeForm.get('billingAddress').touched">
+                  {{view?.billAddressAuthField[0]?.fields.authField}}
+                </div>
+                <div *ngIf="addFundsToCardInitailizeForm.get('billingAddress').hasError('minlength') && addFundsToCardInitailizeForm.get('billingAddress').touched">
+                  {{view?.billAddressAuthField[1]?.fields.authField}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3" data-for="city">
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="city" name="city" data-form-field="city" placeholder="{{view?.cityText}}" minlength="3"
+                maxlength="25" required (input)="allowCharacters(addFundsToCardInitailizeForm.get('city'))">
+                <div *ngIf="addFundsToCardInitailizeForm.get('city').invalid && addFundsToCardInitailizeForm.get('city').touched" class="alert alert-danger">
+                  <div *ngIf="addFundsToCardInitailizeForm.get('city').hasError('required') && addFundsToCardInitailizeForm.get('city').touched">
+                    {{view?.cityAuth[0]?.fields.authField}}
+                  </div>
+                  <div *ngIf="addFundsToCardInitailizeForm.get('city').hasError('minlength') && addFundsToCardInitailizeForm.get('city').touched">
+                     {{view?.cityAuth[1]?.fields.authField}}
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-2" data-for="state">
+            <div class="stateField form-group select-arrow">
+              <select id="stateSelector" class="selectpicker form-control extraPadding" formControlName="state">
+                <option value="">{{view?.stateText}}</option>
+                <option *ngFor="let state of states" [value]="state">{{state}}</option>
+              </select>
+              <div *ngIf="addFundsToCardInitailizeForm.get('state').invalid && addFundsToCardInitailizeForm.get('state').touched" class="alert alert-danger">
+                <div *ngIf="addFundsToCardInitailizeForm.get('state').hasError('required') && addFundsToCardInitailizeForm.get('state').touched">
+                  {{view?.stateAuth.fields.authField}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row row-sm-offset">
+          <div class="col-md-3" data-for="zipCode">
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="zipCode" name="zipCode" data-form-field="zipCode" placeholder="{{view?.zipCodeLabel}}"
+                minlength="5" maxlength="5" required (input)="allowNumber(addFundsToCardInitailizeForm.get('zipCode'))">
+              <div *ngIf="addFundsToCardInitailizeForm.get('zipCode').invalid && addFundsToCardInitailizeForm.get('zipCode').touched" class="alert alert-danger">
+                <div *ngIf="addFundsToCardInitailizeForm.get('zipCode').hasError('required') && addFundsToCardInitailizeForm.get('zipCode').touched">
+                  {{view?.zipCodeAuthField[0]?.fields.authField}}
+                </div>
+                <div *ngIf="addFundsToCardInitailizeForm.get('zipCode').hasError('minlength') && addFundsToCardInitailizeForm.get('zipCode').touched">
+                  {{view?.zipCodeAuthField[1]?.fields.authField}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" data-for="creditCardNumber">
+            <div class="form-group">
+                <input type="text" class="form-control"
+                formControlName="creditCardNumberTemp" name="creditCardNumberTemp" data-form-field="creditCardNumberTemp"
+                required="" placeholder="Credit card number"  maxlength="23" 
+                (input)="creditCardNumbers(addFundsToCardInitailizeForm.get('creditCardNumberTemp'),addFundsToCardInitailizeForm.get('creditCardNumber'))"
+                (blur)="maskCardNumber(addFundsToCardInitailizeForm.get('creditCardNumberTemp'))">
+                <input type="text" style="display:none" class="form-control" formControlName="creditCardNumber" name="creditCardNumber" 
+                  data-form-field="creditCardNumber" required=""
+                  placeholder="Credit card number"  maxlength="23">
+                <div *ngIf="addFundsToCardInitailizeForm.get('creditCardNumber').invalid && addFundsToCardInitailizeForm.get('creditCardNumberTemp').touched">
+                    <div class="alert alert-danger" *ngIf="addFundsToCardInitailizeForm.get('creditCardNumberTemp').hasError('required') && addFundsToCardInitailizeForm.get('creditCardNumberTemp').touched">
+                        {{view?.cardNumberAuthField[0]?.fields.authField}}
+                      </div>
+                      <div class="alert alert-danger" *ngIf="addFundsToCardInitailizeForm.get('creditCardNumberTemp').hasError('minlength') && addFundsToCardInitailizeForm.get('creditCardNumberTemp').touched">
+                        {{view?.cardNumberAuthField[1]?.fields.authField}}
+                      </div>
+                  <div *ngIf="checkOtherErrors() && addFundsToCardInitailizeForm.get('creditCardNumber').getError('creditCard')" class="alert alert-danger">
+                      {{addFundsToCardInitailizeForm.get('creditCardNumber').getError('creditCard').text}}
+                   </div>
+                </div>
+            </div>
+          </div>
+           <div class="col-md-2" data-for="expiration">
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="expiration" name="expiration" data-form-field="expiration" placeholder="{{view?.monthYearLabel}}"
+                minlength="4" maxlength="5" required [textMask]="{mask: cardExpiryMask,guide: false}">
+              <div *ngIf="addFundsToCardInitailizeForm.get('expiration').invalid && addFundsToCardInitailizeForm.get('expiration').touched"
+                class="alert alert-danger">
+                <div *ngIf="addFundsToCardInitailizeForm.get('expiration').hasError('required') && addFundsToCardInitailizeForm.get('expiration').touched">
+                  {{view?.monthYearAuthField[0]?.fields.authField}}
+                </div>
+                <div *ngIf="addFundsToCardInitailizeForm.get('expiration').hasError('pattern') && addFundsToCardInitailizeForm.get('expiration').touched">
+                  {{view?.monthYearAuthField[1]?.fields.authField}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3" data-for="creditCvv">
+            <div class="form-group">
+              <input type="password" class="form-control" formControlName="creditCardCvv" name="creditCardCvv" data-form-field="creditCardCvv" placeholder="{{view?.cvvLabel}}"
+                minlength="3" maxlength="4" (input)="allowNumbers(addFundsToCardInitailizeForm.get('creditCardCvv'))">
+              <div *ngIf="addFundsToCardInitailizeForm.get('creditCardCvv').invalid && addFundsToCardInitailizeForm.get('creditCardCvv').touched" class="alert alert-danger">
+                <div *ngIf="addFundsToCardInitailizeForm.get('creditCardCvv').hasError('required') && addFundsToCardInitailizeForm.get('creditCardCvv').touched">
+                  {{view?.cvvAuthField[0]?.fields.authField}}
+                </div>
+                <div *ngIf="addFundsToCardInitailizeForm.get('creditCardCvv').hasError('minlength') && addFundsToCardInitailizeForm.get('creditCardCvv').touched">
+                   {{view?.cvvAuthField[1]?.fields.authField}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row row-sm-offset mgPreferenceBlock">
+          <div class="col-md-2"></div>
+          <div class="col-md-4" data-for="phone">
+            <label class="mgPreference">{{view?.singleReloadLabel}}
+              <input #singleReload type="radio" formControlName="reloadType" name="reloadType" checked value="single" (change)="autoReloadRequired(false)">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div class="col-md-4" data-for="phone">
+            <label class="mgPreference">{{view?.autoReloadLabel}}
+              <input #autoReload type="radio" formControlName="reloadType" name="reloadType" value="autoreload" (change)="autoReloadRequired(true)">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+        <div class="row row-sm-offset">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" class="form-control" name="amountToReload" required="" formControlName="amountToReload" data-form-field="amountToReload"
+                placeholder="{{view?.amtReloadLabel}}" [textMask]="{mask: dollarMask,guide: false}" (input)="allowNumbers(addFundsToCardInitailizeForm.get('amountToReload'))">
+              <div *ngIf="addFundsToCardInitailizeForm.get('amountToReload').invalid && addFundsToCardInitailizeForm.get('amountToReload').touched"
+                class="alert alert-danger">
+                <div *ngIf="addFundsToCardInitailizeForm.get('amountToReload').hasError('required') && addFundsToCardInitailizeForm.get('amountToReload').touched">
+                  {{view?.monthlyReloadAuthField[0]?.fields.authField}}
+                </div>
+                <div *ngIf="addFundsToCardInitailizeForm.get('amountToReload').hasError('min') && addFundsToCardInitailizeForm.get('amountToReload').touched">
+                  {{view?.monthlyReloadAuthField[1]?.fields.authField}}
+                </div>
+                <div *ngIf="addFundsToCardInitailizeForm.get('amountToReload').hasError('max') && addFundsToCardInitailizeForm.get('amountToReload').touched">
+                  {{view?.monthlyReloadAuthField[2]?.fields.authField}}
+                </div>
+              </div>
+            </div>
+            <div class="amount-reload-text">
+                <div> Amounts between $2 - $250 can be entered. Max balance allowed on card is $500 </div>
+                <div *ngIf="addFundsToCardInitailizeForm.get('reloadType')?.value === 'single'">&emsp;&emsp;&emsp;&emsp;&emsp;You may not reload your card more than 4 times in 24 hours.</div>
+            </div>
+          </div>
+        </div>
+        <div class="row row-sm-offset" *ngIf="autoReload.checked">
+          <div class="col-md-6">
+            <div class="form-group select-arrow">
+              <select class="selectpicker form-control addFundsInputPadding" 
+              (change)="checkRequired($event)" name="dateForReload" formControlName="dateForReload">
+                <option value="" selected>{{view?.monthDropDownLabel}}</option>
+                <option *ngFor="let day of view?.dayValue" [value]="day.fields.entryTitle">{{day.fields.placeHolderText}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6" data-for="name">
+            <div class="form-group">
+              <input type="text" class="form-control" name="balanceThreshold" 
+               formControlName="balanceThreshold" (change)="checkRequired($event)" data-form-field="balanceThreshold"
+                placeholder="{{view?.balanceThresholdLabel}}" [textMask]="{mask: dollarMask,guide: false}" (input)="allowNumbers(addFundsToCardInitailizeForm.get('balanceThreshold'))">
+              <div *ngIf="addFundsToCardInitailizeForm.get('balanceThreshold').invalid && addFundsToCardInitailizeForm.get('balanceThreshold').touched"
+                class="alert alert-danger">
+                <div *ngIf="addFundsToCardInitailizeForm.get('balanceThreshold').hasError('required') && addFundsToCardInitailizeForm.get('balanceThreshold').touched">
+                  {{view?.balanceThresholdAuthField[0]?.fields.authField}}
+                </div>
+                <div *ngIf="addFundsToCardInitailizeForm.get('balanceThreshold').hasError('min') && addFundsToCardInitailizeForm.get('balanceThreshold').touched">
+                   {{view?.balanceThresholdAuthField[1]?.fields.authField}}
+                </div>
+                <div *ngIf="addFundsToCardInitailizeForm.get('balanceThreshold').hasError('max') && addFundsToCardInitailizeForm.get('balanceThreshold').touched">
+                   {{view?.balanceThresholdAuthField[2]?.fields.authField}}
+                </div>
+              </div>
+            </div>
+            <p class="font-color-colorblue">Must be entered in whole dollars. This is the minimum balance that you want to <br>
+               maintain on your card.If the balance on your card drops below this amount, funds <br> will be automatically added to your card.</p>
+          </div>
+        </div>
+        <span class="row input-group-btn vertical-spacing-7">
+          <button type="submit" [disabled]='addFundsToCardInitailizeForm.invalid' class="btn btn-primary btn-form col-md-4 addFundsBtn">{{view?.buttonLabel}}</button>
+        </span>
+      </form>
+      <app-notify *ngIf="showMessage" inputMessage="SUCCESS"></app-notify>
+    </div>
+  </div>
+</div>

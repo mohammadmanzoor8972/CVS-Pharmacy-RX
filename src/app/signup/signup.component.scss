@@ -1,0 +1,162 @@
+  
+.mainH1 {
+  font-size: 31px;
+}
+
+.input-group-btn {
+  display: block;
+  text-align: center;
+}
+.calander-input {
+  width: 265px;
+  &.calender-date{
+    width:100%;
+    .mat-form-field{
+        width:100%;
+    }
+  }
+}
+ :host ::ng-deep .mat-form-field-flex {
+  background: #fff;
+  font-family: 'HelveticaNeue';
+  border: 0;
+  font-size: 16px;
+  text-align: left;
+  vertical-align: middle;
+  border-radius: 0;
+  height: 55px;
+  width: 83%;
+  padding: 0px 12px;
+}
+.language-part{
+  position: relative;
+}
+.language-part:after{
+  content:'';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 5px 0 5px;
+  border-color: #000 transparent transparent transparent;
+  top: 15px;
+  right: 5px;
+  pointer-events: none;
+}
+ 
+#sign-up-date-picker { 
+    .mat-form-field{
+        width: 78%;
+    }
+    #sign-up-date-picker-input.mat-form-field-wrapper {
+      padding-bottom: 0 !important;
+    }
+    .mat-form-field-underline {
+        width: 0 !important;
+    }
+    .alert{
+        width: 64.8% !important;
+    }
+    
+}
+.calendar-btn{
+    position: absolute;
+    width: 20px;
+    right: -18px;
+    top: 9px;
+    font-size: 20px;
+}
+
+#hide-mat-icon{
+    display: none !important;
+}
+
+input.mat-input-element {
+  margin-top: 2.1258px!important;
+}
+
+
+
+.signInPreText {
+  color: #182d57;
+}
+
+.linkATag {
+  text-decoration: underline;
+}
+
+@media (max-width: 991px) {
+
+  .mainH1 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  #cardNumber {
+    text-align: center;
+    &::placeholder {
+      font-size: .8em;
+    }
+    
+  }
+  .numFieldSpanish {
+    #cardNumber {
+      &::placeholder {
+        font-size: .68em;
+      }
+      &::-webkit-input-placeolder {
+        font-size: .68em;
+      }
+      &:-ms-input-placeholder {
+        font-size: .68em;
+      }
+      ::-ms-input-placeholder {
+        font-size: .68em;
+      }
+    }
+  }
+
+  .vertical-spacing-bottom-5 {
+    margin-bottom: 10px;
+  }
+  
+ #sign-up-date-picker { 
+    .mat-form-field {
+        width: 100%;
+    }
+    .alert {
+        width: 100% !important;
+    }
+  }
+
+  :host ::ng-deep .mat-form-field-flex {
+    width: 100%;
+  }
+
+  .dateFieldSpanish {
+    &::ng-deep .mat-form-field-label-wrapper {
+      font-size: 0.97em;
+    }
+  }
+  
+  :host ::ng-deep .mat-form-field-label-wrapper {
+    font-size: 1.3em;
+  }
+  #submitBtnDiv {
+    width: 100%;
+    justify-content: center;
+    margin: 0;
+
+      #submitBtn {
+        width: 75%;
+        font-weight: bold;
+        &:disabled {
+          font-weight: unset;
+        }
+      }
+      .signInPreText {
+        text-align: center;
+      }
+  }
+
+}

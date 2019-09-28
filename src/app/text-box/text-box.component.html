@@ -1,0 +1,8 @@
+<div *ngFor="let link of view" class="makelifeEasier horizontal-padding-right-4 horizontal-padding-left-5 vertical-padding-2 d-none d-sm-none d-xl-block d-lg-block vertical-spacing-top-9">
+  <h3 class="font-color-colorWhite vertical-spacing-4 font28px40pxlh">{{link?.fields.headerText}}</h3>
+  <div *ngFor="let list of link?.fields.listedItemsText" class="listedItems">
+    <ul class="collapse-padding horizontal-spacing-left-4">
+      <li>{{list}}</li>
+    </ul>
+  </div>
+</div>

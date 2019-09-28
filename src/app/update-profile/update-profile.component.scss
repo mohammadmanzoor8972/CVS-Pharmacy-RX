@@ -1,0 +1,70 @@
+.input-group-btn {
+    display: block;
+    text-align: center;
+  }
+  .calander-input {
+    width: 265px;
+    &.calender-date{
+      width:100%;
+      .mat-form-field{
+         width:100%;
+      }
+    }
+}
+ :host /deep/ .mat-form-field-flex{
+  background: #fff;
+  font-family: 'HelveticaNeue';
+  border: 0;
+  font-size: 16px;
+  text-align: left;
+  vertical-align: middle;
+  border-radius: 0;
+  height: 55px;
+  padding: 0px 12px;
+}
+.language-parta{
+  position: relative;
+}
+.language-parta:after{
+  content:'';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 5px 0 5px;
+  border-color: #000 transparent transparent transparent;
+  top: 15px;
+  right: 5px;
+  pointer-events: none;
+}
+
+
+#update-profile-date-picker { 
+    .mat-form-field{
+        width:100% !important;
+    }
+    #sign-up-date-picker-input.mat-form-field-wrapper {
+      padding-bottom: 0 !important;
+    }
+    .mat-form-field-underline {
+        width: 0 !important;
+    }
+    .alert{
+        width:100% !important;
+    }
+    
+}
+.calendar-btn{
+    position: absolute;
+    width: 20px;
+    right: -18px;
+    top: 9px;
+    font-size: 20px;
+}
+
+#hide-mat-icon{
+    display: none !important;
+}
+
+
+

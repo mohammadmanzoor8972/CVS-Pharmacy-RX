@@ -1,0 +1,77 @@
+<app-notify></app-notify>
+<div class="container" id="toppaddingPage">
+    <div class="row justify-content-center">
+        <div class="media-container-column col-lg-8" data-form-type="formoid">
+            <h1 class="text-center vertical-spacing-bottom-8">{{view?.headerText?.fields.header}}</h1>
+            <form [formGroup]="checkBalanceForm" *ngIf="!showBalance" (submit)="onCheckBalanceForm(checkBalanceForm)">
+                <div class="row row-sm-offset">
+                    <div class="col-md-8" data-for="cardNumber">
+                        <div class="form-group">
+                            <input type="tel" name="cardNumber" class="form-control" id="cardNumber" placeholder="{{view?.textPlaceholder[0].fields.placeHolderText}}"
+                                minlength='19' maxlength="19" formControlName='cardNumber' autocomplete="off" required (input)="allowNumbers(checkBalanceForm.get('cardNumber'))">
+                            <div *ngIf="checkBalanceForm.get('cardNumber').invalid && checkBalanceForm.get('cardNumber').touched" class="alert alert-danger">
+                                <div *ngIf="checkBalanceForm.get('cardNumber').hasError('required') && checkBalanceForm.get('cardNumber').touched">
+                                    {{view?.authField[0].fields.authField}}
+                                </div>
+                                <div *ngIf="checkBalanceForm.get('cardNumber').hasError('minlength') && checkBalanceForm.get('cardNumber').touched">
+                                    {{view?.authField[1].fields.authField}}
+                                </div>
+                                <div *ngIf="checkBalanceForm.get('cardNumber').hasError('maxlength') && checkBalanceForm.get('cardNumber').touched">
+                                    {{view?.authField[1].fields.authField}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3" data-for="cardCVV">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <input type="tel" name="cardCVV" class="form-control" id="cardCVV" placeholder="{{view?.textPlaceholder[1].fields.placeHolderText}}"
+                                    minlength='3' maxlength="3" formControlName='cardCVV' required (input)="allowNumbers(checkBalanceForm.get('cardCVV'))">
+                                <div *ngIf="checkBalanceForm.get('cardCVV').invalid && checkBalanceForm.get('cardCVV').touched" class="alert alert-danger">
+                                    <div *ngIf="checkBalanceForm.get('cardCVV').hasError('required') && checkBalanceForm.get('cardCVV').touched">
+                                        {{view?.authField[2].fields.authField}}
+                                    </div>
+                                    <div *ngIf="checkBalanceForm.get('cardCVV').hasError('minlength') && checkBalanceForm.get('cardCVV').touched">
+                                        {{view?.authField[3].fields.authField}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row input-group-btn">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary btn-form display-4 col-md-4" [disabled]='checkBalanceForm.invalid'>{{view?.buttonText}}</button>
+                        <img src="{{view?.magneticCardImage.fields.file.url}}" class="img-fluid imageMagnetic-card" />
+                    </div>
+                </div>
+            </form>
+            <form *ngIf="showBalance">
+                <div class="row row-sm-offset">
+                    <div class="col-md-4" data-for="name">
+                        <div class="advertiseBlock">
+                        </div>
+                    </div>
+                    <div class="col-md-8" data-for="cardInfo">
+                        <div class="row">
+                            <div class="col-md-6 availableBalanceBlock collapse-padding horizontal-spacing-2">
+                                <h6 class="vertical-spacing-3 horizontal-spacing-3 text-center">{{view?.availableBalanceText}}</h6>
+                                <h2 class="vertical-spacing-3 text-center">
+                                    <b>{{availableBalance}}</b>
+                                </h2>
+                            </div>
+                            <div class="col-md-4 collapse-padding availableBalance"> 
+                              <a routerLink="{{view?.pageLink.fields.linkUrl}}">
+                                    {{view?.pageLink.fields.linkName}}
+                                </a>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 vertical-spacing-4 font14px pText">
+                        <span>{{view?.finalThought}}</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<a *ngIf="url && url.match('^(https?|ftp|file|www)://')" href="{{url}}" [attr.target]="target">
+  <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+</a>
+
+<a *ngIf="url && !url.match('^(https?|ftp|file|www)://') && _visible"
+   [routerLink]="url" [ngClass]="linkClass" (click)="scrollToTop()" [attr.target]="target" routerLinkActive="active"
+   [routerLinkActiveOptions]="{exact: true}">
+  <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+</a>
+
+<ng-template #contentTpl>
+  <ng-content></ng-content>
+</ng-template>

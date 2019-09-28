@@ -1,0 +1,228 @@
+.input-group-btn {
+  display: block;
+  text-align: center;
+}
+.dropdown-toggle::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 22px;
+  vertical-align: middle;
+  content: "";
+  border-top: 15px solid;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+  position: relative;
+  left: 9px;
+}
+
+
+/* The container */
+.mgPreference {
+display: block;
+position: relative;
+padding-left: 35px;
+margin-bottom: 12px;
+cursor: pointer;
+font-size: 22px;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.mgPreference input {
+position: absolute;
+opacity: 0;
+cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top:-4px;
+  left: 0;
+  height: 24px;
+  width: 23px;
+  background-color: #fff;
+  border-radius: 50%;
+  border:2px solid #182d57;
+}
+
+/* On mouse-over, add a grey background color */
+.mgPreference:hover input ~ .checkmark {
+background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.mgPreference input:checked ~ .checkmark {
+background-color: #fff;
+border:3px solid #182d57;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+content: "";
+position: absolute;
+display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.mgPreference input:checked ~ .checkmark:after {
+display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.mgPreference .checkmark:after {
+top: 4px;
+left: 3px;
+width: 10px;
+height: 10px;
+border-radius: 50%;
+background: #182d57;
+}
+.input-group-btn {
+display: block;
+text-align: center;
+}
+
+.mgPreferenceBlock{margin: 15px;}
+
+label {
+margin-bottom: 0;
+margin-left: 1px;
+}
+.input-group-btn {
+display: block;
+text-align: center;
+}
+.calander-input {
+width: 265px;
+&.calender-date{
+  width:100%;
+  .mat-form-field{
+     width:100%;
+  }
+}
+}
+:host /deep/ .mat-form-field-flex{
+background: #fff;
+font-family: 'HelveticaNeue';
+border: 0;
+font-size: 16px;
+text-align: left;
+vertical-align: middle;
+border-radius: 0;
+height: 55px;
+padding: 0px 12px;
+}
+.language-part{
+position: relative;
+}
+.language-part:after{
+content:'';
+position: absolute;
+width: 0;
+height: 0;
+border-style: solid;
+border-width: 10px 5px 0 5px;
+border-color: #000 transparent transparent transparent;
+top: 31px;
+right: 18px;
+pointer-events: none;
+}
+
+
+#sign-up-date-picker {
+.mat-form-field{
+    width:70% !important;
+}
+#sign-up-date-picker-input.mat-form-field-wrapper {
+  padding-bottom: 0 !important;
+}
+.mat-form-field-underline {
+    width: 0 !important;
+}
+.alert{
+    width:66% !important;
+}
+
+}
+.calendar-btn{
+position: absolute;
+width: 20px;
+right: -25px;
+top: 9px;
+font-size: 20px;
+}
+
+#hide-mat-icon {
+  display: none !important;
+}
+
+.signUp {
+  margin-left: 16px;
+}
+
+.option{
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  padding-left: 13px;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.option input {
+  display: block;
+  width: 100%;
+  color: #495057;
+  height: 30px;
+  background-color: #fff;
+  background-clip: padding-box;
+}
+
+div.option:hover {
+background-color: #4286f4;
+color:#fff;
+}
+
+.dropdownOptions {
+  position: absolute;
+  top:37px;
+  margin:0 !important;
+  padding: 0;
+  z-index: 99;
+}
+
+.no-border-radius {
+  border-radius:0 !important;
+}
+
+#add-funds-date-picker-input {
+  width: 100% !important;
+}
+.selectpicker {
+  height: 5.5em;
+  width: 100%;
+}
+p {
+  font-size: .55em;
+  text-align: center;
+}
+
+@media (min-width: 766px) {
+  .stateField {
+    min-width: 130px;
+  }
+}
+
+.amount-reload-text{
+   color: #182d57;
+   font-size:.55em;
+   margin-bottom: 1rem;
+  }

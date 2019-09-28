@@ -1,0 +1,213 @@
+/* Copyright (c) 2016 InComm */
+
+/*@mixin font-size($sizeValue: 12) {
+	font-size: $sizeValue + px; // fallback for old browsers
+	font-size: (0.125 * $sizeValue) + rem;
+}*/
+
+/*@mixin line-height($heightValue: 12) {
+	line-height: $heightValue + px; // fallback for old browsers
+	line-height: (0.125 * $heightValue) + rem;
+}*/
+
+
+@mixin line-height($heightValue: 10) {
+	line-height: $heightValue + px;	
+}
+
+@mixin font-size($sizeValue: 16, $line: $sizeValue * 1.5) {
+    font-size: ($sizeValue) + px;
+    line-height: ($line) + px;
+    /*font-size: ($sizeValue / 16) + rem;
+    line-height: ($line / 16) + rem;*/
+}
+
+
+@mixin linx($bgcolor, $link, $visit: $link, $hover: $link, $active: $link) {
+	a {
+		color: $link;
+		text-decoration: none;
+		cursor: pointer;		
+		&:visited {
+
+		}
+		&:hover {
+			color: $hover;			
+			text-decoration: underline;
+			background-color: $bgcolor !important;
+		}
+		&:active {
+			color: $active;
+		}
+	}
+}
+
+@mixin padding($padding) {
+	padding: $padding;
+}
+
+@mixin padding-all($top: null, $right: null, $bottom: null, $left: null) {
+	@if ($top != null) { padding-top: $top; }
+	@if ($right != null) { padding-right: $right; }
+	@if ($bottom != null) { padding-bottom: $bottom; }
+	@if ($left != null) { padding-left: $left; }	
+}
+
+@mixin margin($margin) {
+	margin: $margin;
+}
+
+@mixin margin-all($top: null, $right: null, $bottom: null, $left: null) {
+	@if ($top != null) { margin-top: $top; }
+	@if ($right != null) { margin-right: $right; }
+	@if ($bottom != null) { margin-bottom: $bottom; }
+	@if ($left != null) { margin-left: $left; }	
+}
+
+@mixin size($width, $height: $width) {
+	width: $width;
+	height: $height;
+}
+
+/* Example: @include border(1px solid, #22222, bottom right); */
+@mixin border($style, $color, $sides) {
+    @if ($style != "") {
+        @if ($sides == "") {
+            border: $style $color;
+        } @else {
+            @each $side in $sides {
+               @if ($side == 'top' or
+                    $side == 'right' or
+                    $side == 'bottom' or
+                    $side == 'left') {
+                    border-#{$side}: $style $color;
+                }
+            }
+        }
+    }
+}
+
+
+@mixin font-face($font-family, $file-path, $font-weight: "", $font-style: "") {
+	@font-face {
+		font-family: $font-family;
+		@if ($font-weight != "") { font-weight: $font-weight };
+		@if ($font-style != "") { font-style: $font-style };		
+		src: url('#{$file-path}.eot');
+		src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
+		   	 url('#{$file-path}.woff') format('woff'),
+		     url('#{$file-path}.ttf') format('truetype'),
+		     url('#{$file-path}.svg##{$font-family}') format('svg');		
+	}
+}
+
+@mixin line-divider($borderColor: $colorBlack) {
+	.line-divider {
+		position: relative;
+		top: 10px;
+		border-top: solid 5px $borderColor;
+		margin-bottom: 5px;
+		width: 100%;
+	}	
+}
+
+@mixin copyright-content($fontFamily, $fontSize, $fontWeight, $textColor) {
+	.copyright {
+		p {
+			font-family: $fontFamily;
+			font-weight: $fontWeight;
+			font-size: $fontSize;
+			color: $textColor;
+		}
+	}	
+}
+
+@mixin bgColor($color: $colorBlack) {
+	background-color: $color;	
+}
+
+@mixin textColor($color: $colorBlack) {
+	color: $color;	
+}
+
+@mixin textNBgColor($textColor: $colorBlack, $bgColor: $colorBlack) {
+	color: $textColor;
+	background-color: $bgColor;
+}
+
+$default-margin-width: 5;
+@while $default-margin-width <= 50 {
+	.marginTop-#{$default-margin-width} {
+		margin-top: #{$default-margin-width}px;
+	}
+	.marginRight-#{$default-margin-width} {
+		margin-right: #{$default-margin-width}px;
+	}
+	.marginBottom-#{$default-margin-width} {
+		margin-bottom: #{$default-margin-width}px;
+	}
+	.marginLeft-#{$default-margin-width} {
+		margin-left: #{$default-margin-width}px;
+	}		
+  	$default-margin-width: $default-margin-width + 5;
+}
+
+$default-padding-width: 5;
+@while $default-padding-width <= 50 {
+	.paddingTop-#{$default-padding-width} {
+		padding-top: #{$default-padding-width}px;
+	}
+	.paddingRight-#{$default-padding-width} {
+		padding-right: #{$default-padding-width}px;
+	}
+	.paddingBottom-#{$default-padding-width} {
+		padding-bottom: #{$default-padding-width}px;
+	}
+	.paddingLeft-#{$default-padding-width} {
+		padding-left: #{$default-padding-width}px;
+	}		
+  	$default-padding-width: $default-padding-width + 5;
+}
+
+$default-padding: 5;
+@while $default-padding <= 100 {
+	$padding: $default-padding;
+
+	.padding-#{$default-padding} {
+		padding: $padding+px !important;
+	}
+  	$default-padding: $default-padding + 5;
+}
+
+$default-width: 5;
+@while $default-width <= 100 {
+	$width: percentage($default-width/100);
+
+	@if $default-width == 100 {
+		.fullWidth {
+			width: $width;
+		}	
+	} @else {
+		.width-#{$default-width} {
+			width: $width;
+		}	
+	}	
+  	$default-width: $default-width + 5;
+}
+
+/* Creates font-family, font-size, line-height classes */
+@each $default-fs in $font-sizes {
+	$default-lh: 0;
+	@while $default-lh <= 50 {
+		$fontNo: 1;
+		@each $fontFamily in $fonts {
+			.font-#{$fontNo}-#{$default-fs}-#{$default-lh}px {
+				font-family: $fontFamily;
+	    		font-size: $default-fs;
+	    		line-height: $default-lh+px;
+			}			
+			$fontNo: $fontNo + 1;
+		}
+		$default-lh: $default-lh + 1;
+	}	
+}

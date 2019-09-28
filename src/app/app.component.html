@@ -1,0 +1,11 @@
+<app-notification>
+</app-notification>
+<app-timeout-modal></app-timeout-modal>
+<app-header></app-header>
+<app-navbar></app-navbar>
+<router-outlet (activate)="scrollTop()"  ></router-outlet>
+<app-footer ></app-footer>
+
+<app-loading *ngIf="notifiy?.loading"></app-loading>
+<div class="scrollicon" (click)="scrollTop()" *ngIf="showScrollIcon" > ^ </div>
+<div #googleAnalytics></div>

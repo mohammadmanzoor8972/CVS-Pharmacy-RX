@@ -1,0 +1,57 @@
+<!-- Fixed navbar -->
+<div *ngIf="nav.visible" class="navbar navbar-light navbar-fixed-top navbar-expand-md bg-light d-none d-sm-none d-xl-block d-lg-block ">
+
+  <!--<a class="navbar-brand" [routerLink]="['/home']">CardRx</a>-->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="view?.navLinks" >
+    <ul class="nav navbar-nav mr-auto mt-2 mt-lg-0">
+      <!--<li class="nav-item" [routerLinkActive]="['active']">-->
+      <!--<a class="nav-link" [routerLink]="['/myaccount']">My Account</a>-->
+      <!--</li>-->
+      <li class="nav-item dropdown nav-first" [ngClass]="{'not-logged-in-state': !nav.loggedIn, 'logged-in-state': nav.loggedIn, 'cantClick': !nav.loggedIn}"
+        routerLinkActive #MA="routerLinkActive" [routerLinkActiveOptions]="{exact: true}">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" [ngClass]="MA.isActive ? 'active' : 'in-active'">{{view?.navLinks[0].fields.headertitle}}</a>
+        <ul class="dropdown-menu">
+          <li class="link" routerLink={{view?.navLinks[0].fields.links[0].fields.linkUrl}}>{{view?.navLinks[0].fields.links[0].fields.linkName}}</li>
+          <li class="link" routerLink={{view?.navLinks[0].fields.links[1].fields.linkUrl}}>{{view?.navLinks[0].fields.links[1].fields.linkName}}</li>
+          <li class="link" routerLink={{view?.navLinks[0].fields.links[2].fields.linkUrl}}>{{view?.navLinks[0].fields.links[2].fields.linkName}}</li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown" routerLinkActive [ngClass]="{'not-logged-in-state': !nav.loggedIn, 'logged-in-state': nav.loggedIn}"
+        #MMC='routerLinkActive' [routerLinkActiveOptions]="{exact: true}">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" [ngClass]="MMC.isActive ? 'active' : 'in-active'">{{view?.navLinks[1].fields.headertitle}}</a>
+        <ul class="dropdown-menu">
+          <li class="link" routerLink={{view?.navLinks[1].fields.links[0].fields.linkUrl}}>{{view?.navLinks[1].fields.links[0].fields.linkName}}</li>
+          <li class="link" [ngClass]="{'disabledState': !nav.loggedIn}" routerLink={{view?.navLinks[1].fields.links[1].fields.linkUrl}}>{{view?.navLinks[1].fields.links[1].fields.linkName}}</li>
+          <li class="link" routerLink={{view?.navLinks[1].fields.links[2].fields.linkUrl}}>{{view?.navLinks[1].fields.links[2].fields.linkName}}</li>
+          <li class="link" [ngClass]="{'disabledState': !nav.loggedIn}" routerLink={{view?.navLinks[1].fields.links[3].fields.linkUrl}}>{{view?.navLinks[1].fields.links[3].fields.linkName}}</li>
+          <li class="link" [ngClass]="{'disabledState': !nav.loggedIn}" routerLink={{view?.navLinks[1].fields.links[4].fields.linkUrl}}>{{view?.navLinks[1].fields.links[4].fields.linkName}}</li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown" routerLinkActive [routerLinkActiveOptions]="{exact: true}" #GH='routerLinkActive' [ngClass]="{'not-logged-in-state': !nav.loggedIn, 'logged-in-state': nav.loggedIn}">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" [ngClass]="GH.isActive ? 'active' : 'in-active'">{{view?.navLinks[2].fields.headertitle}}</a>
+        <ul class="dropdown-menu">
+          <li class="link" routerLink={{view?.navLinks[2].fields.links[0].fields.linkUrl}}>{{view?.navLinks[2].fields.links[0].fields.linkName}}</li>
+          <li class="link" routerLink={{view?.navLinks[2].fields.links[1].fields.linkUrl}}>{{view?.navLinks[2].fields.links[1].fields.linkName}}</li>
+          <li class="link" routerLink={{view?.navLinks[2].fields.links[2].fields.linkUrl}}>{{view?.navLinks[2].fields.links[2].fields.linkName}}</li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown" routerLinkActive [routerLinkActiveOptions]="{exact: true}" #TAP='routerLinkActive' [ngClass]="{'not-logged-in-state': !nav.loggedIn, 'logged-in-state': nav.loggedIn}">
+        <a class="nav-link dropdown-toggle" [ngClass]="TAP.isActive ? 'active' : 'in-active'" data-toggle="dropdown">{{view?.navLinks[3].fields.headertitle}}</a>
+        <ul class="dropdown-menu">
+          <li class="link" routerLink={{view?.navLinks[3].fields.links[0].fields.linkUrl}}>{{view?.navLinks[3].fields.links[0].fields.linkName}}</li>
+          <li class="link" routerLink={{view?.navLinks[3].fields.links[1].fields.linkUrl}}>{{view?.navLinks[3].fields.links[1].fields.linkName}}</li>
+          <li class="link" routerLink="{{view?.navLinks[3].fields.links[2].fields.linkUrl}}">{{view?.navLinks[3].fields.links[2].fields.linkName}}</li>
+          <li class="link" routerLink="{{view?.navLinks[3].fields.links[3].fields.linkUrl}}">{{view?.navLinks[3].fields.links[3].fields.linkName}}</li>
+        </ul>
+      </li>
+    </ul>
+    <!-- <ul class="navbar-nav my-2 my-lg-0">-->
+    <!--<li class="nav-item" [appShowAuthed]="false"><a class="btn btn-outline-success" [routerLink]="['/signin']">{{'signin'}}</a></li>-->
+    <!--<li class="nav-item" [appShowAuthed]="false"><a class="nav-link" [routerLink]="['/signup']">{{'signup'}}</a>-->
+    <!--</li>-->
+    <!--<li class="nav-item" [appShowAuthed]="true"><button type="button" class="btn btn-outline-danger" (click)="logout()">{{'logout'}}</button>-->
+    <!--</li>-->
+    <!--</ul> -->
+  </div>
+  <!--/.nav-collapse -->
+</div>
